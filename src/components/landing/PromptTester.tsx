@@ -93,7 +93,7 @@ export function PromptTester() {
       <div className="mx-auto max-w-7xl">
         <div className="mb-10 text-center">
           <span className="text-xs font-bold uppercase tracking-widest text-accent">
-            Sección 01 · Interactivo
+            Interactivo
           </span>
           <h2 className="mt-3 text-3xl font-black tracking-tight sm:text-5xl">
             El Probador de <span className="text-primary">Prompts</span>

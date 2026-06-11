@@ -32,7 +32,7 @@ export function ToolsDirectory() {
       <div className="mx-auto max-w-7xl">
         <div className="mb-10 text-center">
           <span className="text-xs font-bold uppercase tracking-widest text-accent">
-            Sección 03 · Directorio
+            Directorio
           </span>
           <h2 className="mt-3 text-3xl font-black tracking-tight sm:text-5xl">
             Herramientas <span className="text-primary">Premium</span>

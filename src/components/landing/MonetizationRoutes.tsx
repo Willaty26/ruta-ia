@@ -80,7 +80,7 @@ const ROUTES: Route[] = [
       {
         title: "Crea 3 plantillas reutilizables y un proceso de entrega",
         detail:
-          "Construye una plantilla por vertical (restaurante, profesional de salud, e-commerce básico). Cada plantilla incluye: hero con reserva/CTA, sección de servicios o menú, testimonios, mapa y contacto, integración con WhatsApp Business y formulario que envía al email del cliente. Documenta tu proceso en un Notion: cuestionario inicial al cliente → diseño en 24h → revisión → publicación. Así puedes entregar en 48h sin morir.",
+          "Construye una plantilla por vertical (restaurante, profesional de salud, e-commerce básico). Cada plantilla incluye: hero con reserva/CTA, bloque de servicios o menú, testimonios, mapa y contacto, integración con WhatsApp Business y formulario que envía al email del cliente. Documenta tu proceso en un Notion: cuestionario inicial al cliente → diseño en 24h → revisión → publicación. Así puedes entregar en 48h sin morir.",
         tip: "Cobra una cuota mensual extra por mantenimiento, hosting gestionado y cambios menores — así creas ingresos recurrentes que valen el poco tiempo que les dedicas.",
         tool: "Lovable + Notion (proceso) + Unsplash + Cloudflare",
       },
@@ -101,7 +101,7 @@ export function MonetizationRoutes() {
       <div className="mx-auto max-w-7xl">
         <div className="mb-10 text-center">
           <span className="text-xs font-bold uppercase tracking-widest text-accent">
-            Sección 02 · Paso a paso
+            Paso a paso
           </span>
           <h2 className="mt-3 text-3xl font-black tracking-tight sm:text-5xl">
             Rutas de <span className="text-accent">Monetización</span>
