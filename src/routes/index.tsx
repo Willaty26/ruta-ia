@@ -4,6 +4,7 @@ import { Navbar } from "@/components/landing/Navbar";
 import { Hero } from "@/components/landing/Hero";
 import { PromptTester } from "@/components/landing/PromptTester";
 import { MonetizationRoutes } from "@/components/landing/MonetizationRoutes";
+import { PrimeYoungAd } from "@/components/landing/PrimeYoungAd";
 import { ToolsDirectory } from "@/components/landing/ToolsDirectory";
 import { Testimonials } from "@/components/landing/Testimonials";
 import { FAQ } from "@/components/landing/FAQ";
@@ -105,6 +106,9 @@ function Index() {
         <Hero />
         <PromptTester />
         <MonetizationRoutes />
+        <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
+          <PrimeYoungAd />
+        </div>
         <ToolsDirectory />
         <Testimonials />
         <FAQ />
