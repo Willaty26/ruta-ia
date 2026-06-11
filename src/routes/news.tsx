@@ -190,7 +190,7 @@ function NewsPage() {
                 ))}
               </div>
             )}
-            <AdSlot />
+            <AdSlot label="📘 Sigue aprendiendo: libro de IA destacado en Amazon" variant={1} />
           </TabsContent>
         </Tabs>
       </main>
