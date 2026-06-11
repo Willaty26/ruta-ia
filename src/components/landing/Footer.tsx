@@ -6,8 +6,15 @@ export function Footer() {
           © {new Date().getFullYear()} Ruta IA · Aprende y Gana. Todos los derechos reservados.
         </p>
         <p className="text-xs text-muted-foreground">
-          Hecho con <span className="text-accent">IA</span> para emprendedores curiosos.
+          Contacto:{" "}
+          <a
+            href="mailto:Alexmiguelrojas62@gmail.com"
+            className="text-accent hover:underline"
+          >
+            Alexmiguelrojas62@gmail.com
+          </a>
         </p>
+
       </div>
       <p className="mx-auto mt-6 max-w-7xl text-center text-[10px] text-muted-foreground/60">
         Impact-Site-Verification: 2f3156e9-9239-4fcc-8f3f-f7d8b13fbb30
