@@ -9,6 +9,10 @@ export function Footer() {
           Hecho con <span className="text-accent">IA</span> para emprendedores curiosos.
         </p>
       </div>
+      <p className="mx-auto mt-6 max-w-7xl text-center text-[10px] text-muted-foreground/60">
+        Impact-Site-Verification: 2f3156e9-9239-4fcc-8f3f-f7d8b13fbb30
+      </p>
     </footer>
+
   );
 }
