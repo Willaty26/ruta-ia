@@ -5,7 +5,10 @@ import { Hero } from "@/components/landing/Hero";
 import { PromptTester } from "@/components/landing/PromptTester";
 import { MonetizationRoutes } from "@/components/landing/MonetizationRoutes";
 import { ToolsDirectory } from "@/components/landing/ToolsDirectory";
+import { Testimonials } from "@/components/landing/Testimonials";
+import { FAQ } from "@/components/landing/FAQ";
 import { Footer } from "@/components/landing/Footer";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -38,7 +41,10 @@ function Index() {
         <PromptTester />
         <MonetizationRoutes />
         <ToolsDirectory />
+        <Testimonials />
+        <FAQ />
       </main>
+
       <Footer />
       <Toaster />
     </div>
