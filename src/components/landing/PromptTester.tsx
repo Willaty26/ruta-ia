@@ -56,53 +56,14 @@ Entrégame un plan de acción brutal y realista:
 Sé directo, sin relleno motivacional. Si la idea tiene un problema grave, dímelo.`,
   },
   creador: {
-    title: "Para Creadores de Contenido — Sistema viral de 30 días",
+    title: "Para Creadores de Contenido — Guion viral de 45 segundos",
     prompt:
-      `Actúa como estratega de contenido viral con experiencia gestionando creadores que superan 1M de seguidores en TikTok, Reels y YouTube Shorts.
-
-Mi nicho es: '[NICHO ESPECÍFICO]'.
-Mi audiencia objetivo: [EDAD, INTERESES, PROBLEMA QUE RESUELVO].
-Plataforma principal: [TIKTOK / REELS / SHORTS].
-Tono de mi marca: [EDUCATIVO / DIVERTIDO / POLÉMICO / INSPIRADOR].
-
-Diséñame un sistema completo:
-
-1) 3 ángulos de contenido diferenciados dentro de mi nicho, con justificación de por qué cada uno tiene demanda en 2026.
-2) 15 ideas de videos cortos (60–90 seg) divididas en 5 pilares: educativo, controversial, storytime, listas/tips, behind-the-scenes.
-3) Para CADA idea: hook de 3 segundos (la primera frase exacta), estructura del guion en 5 beats, CTA final y 5 hashtags optimizados (mezcla amplios + nicho).
-4) Calendario editorial de 30 días con frecuencia óptima de publicación según mi plataforma.
-5) Formato de B-roll, cortes y subtítulos que retienen más en 2026 (con timestamps específicos).
-6) 3 KPIs reales a medir (retención %, tasa de guardado, comentarios) con benchmarks de qué es 'bueno'.
-7) 5 errores que matan el alcance hoy en día (shadowban, watermarks, audios baneados, etc.).
-8) Plan de monetización por fases: 0–10K seguidores, 10K–100K y 100K+.
-
-Marca con 🔥 las 3 ideas con mayor potencial viral y explica el porqué basándote en tendencias actuales.`,
+      `Actúa como un guionista experto en TikTok e Instagram Reels. Escribe un guion de 45 segundos sobre [TEMA] estructurado con un gancho intriga en los primeros 3 segundos, 3 datos curiosos o de valor en el desarrollo, y un llamado a la acción persuasivo para seguir la cuenta. Incluye sugerencias visuales entre paréntesis para saber qué grabar en cada escena.`,
   },
   freelance: {
-    title: "Para Freelancers — De cero al primer cliente en 14 días",
+    title: "Para Freelancers — Propuesta para Upwork / Fiverr",
     prompt:
-      `Actúa como coach de freelancers con IA, especializado en ayudar a profesionales a conseguir su primer cliente bien pagado en menos de 14 días.
-
-Quiero ofrecer servicios de: '[SERVICIO ESPECÍFICO]'.
-Mi experiencia previa: [NINGUNA / HOBBY / PROFESIONAL EN OTRO CAMPO].
-Horas semanales disponibles: [X].
-Idiomas que hablo: [ESPAÑOL / INGLÉS / OTRO].
-Meta de ingresos mensuales: [X USD/EUR].
-
-Construye mi negocio freelance desde cero:
-
-1) Propuesta de valor en 2 frases, diferenciada y específica (nada de 'ayudo a empresas a crecer').
-2) Mi cliente ideal (ICP): industria, tamaño, cargo de quien contrata, dolor concreto que resuelvo.
-3) 3 paquetes de precios (Básico / Pro / Premium) con entregables claros, plazos y precio en USD y EUR. Justifica los precios con el valor que entregan.
-4) Portafolio mínimo viable: 3 proyectos demo que puedo crear en un fin de semana para mostrar capacidad sin tener clientes previos.
-5) Plantilla de cold email (en español y en inglés) de máximo 100 palabras, con asunto que abre y CTA blando.
-6) Plantilla de mensaje de LinkedIn para conectar + segundo mensaje de seguimiento 3 días después.
-7) 5 plataformas para conseguir clientes HOY (Upwork, Contra, LinkedIn, Twitter/X, comunidades específicas) con tip concreto de cómo destacar en cada una.
-8) Sistema de seguimiento: cómo organizar prospectos, cuántos contactos enviar al día, cuándo dejar de insistir.
-9) Plantilla de propuesta comercial (estructura de 1 página) que cierre clientes sin parecer agresiva.
-10) Errores legales y de cobro que arruinan a freelancers principiantes (contratos, anticipo, formas de pago internacional).
-
-Termina con un plan accionable para los próximos 14 días, día por día.`,
+      `Actúa como un redactor de cartas de presentación para plataformas como Upwork y Fiverr. Escribe una propuesta altamente persuasiva de 3 párrafos para un cliente que busca un creador de contenido. El primer párrafo debe romper el hielo demostrando interés en su proyecto; el segundo debe explicar cómo mi habilidad resuelve su problema específico; el tercero debe invitarlo a una llamada rápida de 5 minutos.`,
   },
 };
 

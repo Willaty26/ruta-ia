@@ -8,30 +8,30 @@ type Route = { id: string; label: string; short: string; icon: typeof Video; ste
 const ROUTES: Route[] = [
   {
     id: "a",
-    label: "Ruta A · Creador Express",
-    short: "Videos cortos automatizados con IA",
+    label: "Ruta A · Creador Automatizado",
+    short: "Faceless channels con IA",
     icon: Video,
     steps: [
       {
-        title: "Define tu nicho y valida demanda antes de grabar",
+        title: "La Estrategia — elige un nicho de alta curiosidad",
         detail:
-          "Elige un nicho donde puedas hacer 100 videos sin quedarte sin ideas. Valida con la herramienta de búsqueda de TikTok: si los videos top del nicho superan 100K views consistentemente, hay mercado. Estudia los 10 creadores más grandes y anota qué formatos repiten.",
-        tip: "Nichos con anunciantes (finanzas, salud, productividad, tecnología) pagan 5–10x más por CPM que entretenimiento puro.",
+          "Identifica un nicho de alta curiosidad (misterios del mundo, datos de salud, finanzas para jóvenes, ciencia rara, historia oculta). No necesitas mostrar tu rostro: el éxito radica en la constancia de subir 1 video al día durante 30 días. Estudia los 5 canales faceless más grandes de tu nicho y replica el formato que más se repite — la originalidad llega después de los primeros 100 videos.",
+        tip: "Nichos con anunciantes (finanzas, salud, tecnología, productividad) pagan 5–10x más por CPM que el entretenimiento puro.",
         tool: "TikTok Creative Center + 1of10",
       },
       {
-        title: "Crea un sistema de producción reproducible (no improvises)",
+        title: "La Producción — guiones con IA y montaje en CapCut",
         detail:
-          "Diseña una plantilla: hook de 3 segundos → problema → solución en 3 pasos → CTA. Pídele a ChatGPT 30 guiones siguiendo esa estructura. Genera la voz con ElevenLabs (siempre la misma para construir marca sonora), monta los visuales con Pictory o CapCut y bátchealo: graba 7 videos en una sola sesión semanal.",
-        tip: "El algoritmo premia constancia y retención por encima de calidad. Es mejor 30 videos en 30 días que 5 videos perfectos.",
-        tool: "ChatGPT + ElevenLabs + CapCut",
+          "Usa ChatGPT para generar 10 guiones cortos siguiendo tu plantilla (hook de 3 seg → 3 datos de valor → CTA). Luego entra a CapCut (lo tienes en nuestro directorio), usa su herramienta 'Texto a Video' con voces de IA realistas, y añade imágenes o B-roll de fondo de alta calidad. Bátchealo: produce 7 videos en una sola sesión semanal para liberar el resto de la semana.",
+        tip: "Usa siempre la misma voz IA en todos los videos: construir marca sonora multiplica la tasa de reconocimiento del canal.",
+        tool: "ChatGPT + CapCut + ElevenLabs",
       },
       {
-        title: "Monetiza por capas, no solo con AdSense",
+        title: "La Monetización Real — afiliados antes que vistas",
         detail:
-          "Antes de los 10K seguidores: enlace de afiliados de Amazon/Hotmart en bio. Entre 10K–50K: marca patrocinadora pequeña (50–200 USD por video). Después: producto propio (ebook, plantilla, comunidad de pago). El error típico es esperar a la monetización de la plataforma — empieza a vender desde el video 1.",
-        tip: "Reinvierte las primeras ganancias en una mejor voz IA o en un editor freelance: eso multiplica tu output sin quemarte.",
-        tool: "YouTube Shorts + TikTok + Beacons.ai",
+          "No dependas solo de los pagos de TikTok por vistas (son ridículamente bajos al principio). Coloca un enlace de afiliado en tu perfil de un producto físico relacionado con tu contenido — si hablas de salud, un libro de nutrición de Amazon; si hablas de finanzas, una agenda o calculadora financiera. Si mantienes apenas un 1% de tasa de conversión de tus visitas a clics y compras, generarás ingresos estables desde el primer mes.",
+        tip: "Diversifica con 3 enlaces: Amazon Afiliados, Hotmart (infoproductos en español) y una herramienta SaaS (mayor comisión recurrente).",
+        tool: "Amazon Afiliados + Hotmart + Beacons.ai",
       },
     ],
   },
