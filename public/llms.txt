@@ -1,0 +1,10 @@
+# Ruta IA: Aprende y Gana
+
+> Plataforma interactiva en español que ayuda a principiantes a dominar herramientas de Inteligencia Artificial y descubrir rutas paso a paso para generar ingresos desde casa.
+
+Ruta IA reúne prompts listos para copiar, guías de monetización por perfil (creador, freelancer, micro-agencia), un directorio de herramientas de IA recomendadas y respuestas a las dudas más comunes de quienes están empezando.
+
+## Pages
+
+- [Inicio](/): Hero, probador interactivo de prompts, rutas de monetización paso a paso, directorio de herramientas de IA, testimonios y FAQ.
+- [Sitemap](/sitemap.xml): Índice XML de todas las rutas públicas indexables del sitio.
