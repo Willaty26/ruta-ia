@@ -36,7 +36,7 @@ export function Testimonials() {
       <div className="mx-auto max-w-7xl">
         <div className="mb-12 text-center">
           <span className="text-xs font-bold uppercase tracking-widest text-accent">
-            Sección 04 · Resultados Reales
+            Resultados Reales
           </span>
           <h2 className="mt-3 text-3xl font-black tracking-tight sm:text-5xl">
             Lo que están <span className="text-primary">consiguiendo</span> con la ruta

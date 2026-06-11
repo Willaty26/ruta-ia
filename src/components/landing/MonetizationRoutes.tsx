@@ -101,7 +101,7 @@ export function MonetizationRoutes() {
       <div className="mx-auto max-w-7xl">
         <div className="mb-10 text-center">
           <span className="text-xs font-bold uppercase tracking-widest text-accent">
-            Sección 02 · Paso a paso
+            Paso a paso
           </span>
           <h2 className="mt-3 text-3xl font-black tracking-tight sm:text-5xl">
             Rutas de <span className="text-accent">Monetización</span>

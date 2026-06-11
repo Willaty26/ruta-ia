@@ -39,7 +39,7 @@ export function FAQ() {
       <div className="mx-auto max-w-3xl">
         <div className="mb-10 text-center">
           <span className="text-xs font-bold uppercase tracking-widest text-accent">
-            Sección 05 · Resuelve tus dudas
+            Resuelve tus dudas
           </span>
           <h2 className="mt-3 text-3xl font-black tracking-tight sm:text-5xl">
             Preguntas <span className="text-primary">Frecuentes</span>
