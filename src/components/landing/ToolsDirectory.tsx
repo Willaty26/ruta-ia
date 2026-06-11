@@ -80,6 +80,9 @@ export function ToolsDirectory() {
                 </div>
               </div>
               <p className="mt-4 text-sm text-muted-foreground">{tool.desc}</p>
+              <p className="mt-2 text-xs font-medium leading-relaxed text-foreground/90">
+                <span className="font-bold text-primary">{tool.useCase.split(":")[0]}:</span>{tool.useCase.split(":").slice(1).join(":")}
+              </p>
               <p className="mt-3 flex-1 rounded-lg border border-accent/20 bg-accent/5 p-3 text-xs italic leading-relaxed text-foreground/80">
                 💡 {tool.note}
               </p>
