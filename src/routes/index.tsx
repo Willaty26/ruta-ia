@@ -1,29 +1,46 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Toaster } from "@/components/ui/sonner";
+import { Navbar } from "@/components/landing/Navbar";
+import { Hero } from "@/components/landing/Hero";
+import { PromptTester } from "@/components/landing/PromptTester";
+import { MonetizationRoutes } from "@/components/landing/MonetizationRoutes";
+import { ToolsDirectory } from "@/components/landing/ToolsDirectory";
+import { Footer } from "@/components/landing/Footer";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Your App" },
-      { name: "description", content: "Replace this with a one-sentence description of your app." },
-      { property: "og:title", content: "Your App" },
-      { property: "og:description", content: "Replace this with a one-sentence description of your app." },
+      { title: "Ruta IA: Aprende y Gana — Domina la IA y genera ingresos" },
+      {
+        name: "description",
+        content:
+          "Plataforma interactiva para principiantes en IA. Prompts listos, rutas de monetización paso a paso y directorio de herramientas premium.",
+      },
+      { property: "og:title", content: "Ruta IA: Aprende y Gana" },
+      {
+        property: "og:description",
+        content:
+          "Herramientas gratuitas, guías paso a paso y prompts listos para usar. Empieza tu ruta hoy.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="min-h-screen bg-background text-foreground">
+      <Navbar />
+      <main>
+        <Hero />
+        <PromptTester />
+        <MonetizationRoutes />
+        <ToolsDirectory />
+      </main>
+      <Footer />
+      <Toaster />
     </div>
   );
 }
