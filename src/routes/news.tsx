@@ -177,7 +177,7 @@ function NewsPage() {
                 ))}
               </div>
             )}
-            <AdSlot />
+            <AdSlot label="📚 Libro recomendado en Amazon: domina la IA paso a paso" variant={0} />
           </TabsContent>
 
           <TabsContent value="curiosas" className="mt-8 space-y-8">
@@ -190,7 +190,7 @@ function NewsPage() {
                 ))}
               </div>
             )}
-            <AdSlot />
+            <AdSlot label="📘 Sigue aprendiendo: libro de IA destacado en Amazon" variant={1} />
           </TabsContent>
         </Tabs>
       </main>
