@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as PoliticaDePrivacidadRouteImport } from './routes/politica-de-privacidad'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as GuiasGanarDineroDesdeCasaIaRouteImport } from './routes/guias.ganar-dinero-desde-casa-ia'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PoliticaDePrivacidadRoute = PoliticaDePrivacidadRouteImport.update({
+  id: '/politica-de-privacidad',
+  path: '/politica-de-privacidad',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -32,30 +38,47 @@ const GuiasGanarDineroDesdeCasaIaRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/politica-de-privacidad': typeof PoliticaDePrivacidadRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/guias/ganar-dinero-desde-casa-ia': typeof GuiasGanarDineroDesdeCasaIaRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/politica-de-privacidad': typeof PoliticaDePrivacidadRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/guias/ganar-dinero-desde-casa-ia': typeof GuiasGanarDineroDesdeCasaIaRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/politica-de-privacidad': typeof PoliticaDePrivacidadRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/guias/ganar-dinero-desde-casa-ia': typeof GuiasGanarDineroDesdeCasaIaRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/sitemap.xml' | '/guias/ganar-dinero-desde-casa-ia'
+  fullPaths:
+    | '/'
+    | '/politica-de-privacidad'
+    | '/sitemap.xml'
+    | '/guias/ganar-dinero-desde-casa-ia'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/sitemap.xml' | '/guias/ganar-dinero-desde-casa-ia'
-  id: '__root__' | '/' | '/sitemap.xml' | '/guias/ganar-dinero-desde-casa-ia'
+  to:
+    | '/'
+    | '/politica-de-privacidad'
+    | '/sitemap.xml'
+    | '/guias/ganar-dinero-desde-casa-ia'
+  id:
+    | '__root__'
+    | '/'
+    | '/politica-de-privacidad'
+    | '/sitemap.xml'
+    | '/guias/ganar-dinero-desde-casa-ia'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  PoliticaDePrivacidadRoute: typeof PoliticaDePrivacidadRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   GuiasGanarDineroDesdeCasaIaRoute: typeof GuiasGanarDineroDesdeCasaIaRoute
 }
@@ -67,6 +90,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/politica-de-privacidad': {
+      id: '/politica-de-privacidad'
+      path: '/politica-de-privacidad'
+      fullPath: '/politica-de-privacidad'
+      preLoaderRoute: typeof PoliticaDePrivacidadRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -88,9 +118,20 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  PoliticaDePrivacidadRoute: PoliticaDePrivacidadRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   GuiasGanarDineroDesdeCasaIaRoute: GuiasGanarDineroDesdeCasaIaRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
