@@ -1,5 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, Share2 } from "lucide-react";
+import { useSuspenseQuery, queryOptions } from "@tanstack/react-query";
+import { useServerFn } from "@tanstack/react-start";
+import { ArrowLeft, ExternalLink, RefreshCw, Share2 } from "lucide-react";
 import { toast } from "sonner";
 import { Toaster } from "@/components/ui/sonner";
 import { Button } from "@/components/ui/button";
@@ -9,6 +11,13 @@ import { Badge } from "@/components/ui/badge";
 import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import { AdSlot } from "@/components/landing/AdSlot";
+import { getAINews, type NewsArticle, type NewsPayload } from "@/lib/news.functions";
+
+const newsQueryOptions = queryOptions<NewsPayload>({
+  queryKey: ["ai-news"],
+  queryFn: () => getAINews(),
+  staleTime: 1000 * 60 * 30, // 30 min en cliente
+});
 
 export const Route = createFileRoute("/news")({
   head: () => ({
@@ -17,106 +26,104 @@ export const Route = createFileRoute("/news")({
       {
         name: "description",
         content:
-          "Últimas noticias y curiosidades sobre Inteligencia Artificial: Big Tech, modelos, infraestructura y datos sorprendentes.",
+          "Últimas noticias y curiosidades reales sobre Inteligencia Artificial, actualizadas automáticamente con fuentes verificables.",
       },
       { property: "og:title", content: "IA al Día — Noticias y Datos Fascinantes" },
       {
         property: "og:description",
         content:
-          "Noticias reales y curiosidades de IA actualizadas. Mantente al día con lo que mueve al mundo de la Inteligencia Artificial.",
+          "Noticias reales y curiosidades de IA actualizadas cada pocas horas con enlaces a la fuente original.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://rutadeia.com/news" },
     ],
     links: [{ rel: "canonical", href: "https://rutadeia.com/news" }],
   }),
+  loader: ({ context }) => context.queryClient.ensureQueryData(newsQueryOptions),
   component: NewsPage,
+  errorComponent: ({ error }) => (
+    <div className="mx-auto max-w-2xl px-4 py-20 text-center">
+      <h1 className="text-2xl font-bold">No pudimos cargar las noticias</h1>
+      <p className="mt-3 text-muted-foreground">{error.message}</p>
+      <Link to="/" className="mt-6 inline-block text-primary underline">
+        Volver al inicio
+      </Link>
+    </div>
+  ),
 });
 
-type Article = {
-  category: string;
-  title: string;
-  summary: string;
-};
-
-const NEWS: Article[] = [
-  {
-    category: "Big Tech",
-    title: "Apple paga $1,000 millones al año a Google por integrar Gemini en Siri.",
-    summary:
-      "Durante el evento WWDC 2026, Tim Cook confirmó una alianza masiva donde Apple licenciará un modelo Gemini de 1.2 billones de parámetros para potenciar a Siri en el iPhone, abriendo además iMessage al ecosistema de Claude.",
-  },
-  {
-    category: "Modelos",
-    title: "Anthropic lanza su IA más potente pero con restricciones biológicas.",
-    summary:
-      "Anthropic liberó su nuevo modelo \"Mythos-Class\" al público general. Aunque es increíblemente rápido y avanzado, incluye fuertes bloqueos éticos y de ciberseguridad para evitar que sea usado en el desarrollo de riesgos biológicos.",
-  },
-  {
-    category: "Infraestructura",
-    title: "Google alquila 110,000 procesadores a SpaceX por falta de capacidad.",
-    summary:
-      "La demanda empresarial de Gemini superó las expectativas. Google firmó un acuerdo de $11,000 millones anuales con SpaceX para usar su infraestructura de servidores en órbita y no quedarse atrás en la carrera tecnológica.",
-  },
-];
-
-const CURIOUS: Article[] = [
-  {
-    category: "Energía",
-    title: "¿La IA destruirá el planeta? El dato energético que asusta.",
-    summary:
-      "La Agencia Internacional de Energía estima que los centros de datos de IA consumen el 4% de la electricidad mundial. ¡Eso equivale a toda la energía que consume el país de Japón en un año entero!",
-  },
-  {
-    category: "Salud",
-    title: "Diagnósticos médicos al 99% de precisión.",
-    summary:
-      "Actualmente hay sistemas de Inteligencia Artificial que logran interpretar mamografías e identificar señales tempranas de enfermedades con un 99% de precisión sin necesidad de dolorosas biopsias iniciales.",
-  },
-];
-
-function shareArticle(article: Article) {
-  const shareUrl = "https://rutadeia.com/news";
+function shareArticle(article: NewsArticle) {
   const text = `${article.title} — vía Ruta IA`;
-  if (typeof navigator !== "undefined" && (navigator as Navigator & { share?: (d: ShareData) => Promise<void> }).share) {
+  if (
+    typeof navigator !== "undefined" &&
+    (navigator as Navigator & { share?: (d: ShareData) => Promise<void> }).share
+  ) {
     (navigator as Navigator & { share: (d: ShareData) => Promise<void> })
-      .share({ title: article.title, text, url: shareUrl })
+      .share({ title: article.title, text, url: article.url })
       .catch(() => {});
   } else if (typeof navigator !== "undefined" && navigator.clipboard) {
-    navigator.clipboard.writeText(`${text} ${shareUrl}`);
+    navigator.clipboard.writeText(`${text} ${article.url}`);
     toast.success("Enlace copiado al portapapeles");
   }
 }
 
-function ArticleCard({ article }: { article: Article }) {
+function ArticleCard({ article }: { article: NewsArticle }) {
   return (
     <Card className="group flex h-full flex-col border-border/60 bg-card/60 transition-all hover:border-primary/60 hover:shadow-[var(--shadow-glow)]">
       <CardHeader className="space-y-3">
-        <Badge
-          variant="outline"
-          className="w-fit border-primary/40 bg-primary/10 text-primary"
-        >
-          {article.category}
-        </Badge>
+        <div className="flex items-center justify-between gap-2">
+          <Badge variant="outline" className="border-primary/40 bg-primary/10 text-primary">
+            {article.category}
+          </Badge>
+          <span className="truncate text-xs text-muted-foreground">{article.source}</span>
+        </div>
         <CardTitle className="text-lg leading-snug">{article.title}</CardTitle>
       </CardHeader>
       <CardContent className="flex flex-1 flex-col justify-between gap-4">
-        <p className="text-sm leading-relaxed text-muted-foreground">{article.summary}</p>
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={() => shareArticle(article)}
-          className="w-fit text-muted-foreground hover:text-primary"
-        >
-          <Share2 className="mr-1.5 h-4 w-4" />
-          Compartir noticia
-        </Button>
+        <p className="text-sm leading-relaxed text-muted-foreground">{article.description}</p>
+        <div className="flex flex-wrap items-center gap-2">
+          <a
+            href={article.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 rounded-md bg-primary/10 px-3 py-1.5 text-xs font-bold text-primary transition-colors hover:bg-primary/20"
+          >
+            <ExternalLink className="h-3.5 w-3.5" />
+            Leer fuente
+          </a>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => shareArticle(article)}
+            className="text-muted-foreground hover:text-primary"
+          >
+            <Share2 className="mr-1.5 h-4 w-4" />
+            Compartir
+          </Button>
+        </div>
       </CardContent>
     </Card>
   );
 }
 
+function formatFetchedAt(iso: string) {
+  try {
+    return new Date(iso).toLocaleString("es", {
+      dateStyle: "medium",
+      timeStyle: "short",
+    });
+  } catch {
+    return iso;
+  }
+}
+
 function NewsPage() {
+  const fetchNews = useServerFn(getAINews);
+  const { data, refetch, isFetching } = useSuspenseQuery({
+    ...newsQueryOptions,
+    queryFn: () => fetchNews(),
+  });
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
@@ -134,8 +141,24 @@ function NewsPage() {
             IA al Día: Noticias y Datos Fascinantes
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-base text-muted-foreground sm:text-lg">
-            Lo más reciente del mundo de la Inteligencia Artificial y datos que te van a sorprender.
+            Titulares reales extraídos de la web, con enlace a la fuente original. Se actualiza solo cada pocas horas.
           </p>
+          <div className="mt-4 flex flex-wrap items-center justify-center gap-3 text-xs text-muted-foreground">
+            <span>
+              Última actualización: <strong className="text-foreground">{formatFetchedAt(data.fetchedAt)}</strong>
+              {data.stale ? " (caché)" : ""}
+            </span>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => refetch()}
+              disabled={isFetching}
+              className="h-7 px-2 text-xs"
+            >
+              <RefreshCw className={`mr-1.5 h-3.5 w-3.5 ${isFetching ? "animate-spin" : ""}`} />
+              Actualizar
+            </Button>
+          </div>
         </header>
 
         <Tabs defaultValue="ultima" className="mt-10">
@@ -145,19 +168,28 @@ function NewsPage() {
           </TabsList>
 
           <TabsContent value="ultima" className="mt-8 space-y-8">
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              <ArticleCard article={NEWS[0]} />
-              <ArticleCard article={NEWS[1]} />
-              <ArticleCard article={NEWS[2]} />
-            </div>
+            {data.news.length === 0 ? (
+              <p className="text-center text-muted-foreground">Sin noticias por el momento.</p>
+            ) : (
+              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                {data.news.map((a) => (
+                  <ArticleCard key={a.url} article={a} />
+                ))}
+              </div>
+            )}
             <AdSlot />
           </TabsContent>
 
           <TabsContent value="curiosas" className="mt-8 space-y-8">
-            <div className="grid gap-6 sm:grid-cols-2">
-              <ArticleCard article={CURIOUS[0]} />
-              <ArticleCard article={CURIOUS[1]} />
-            </div>
+            {data.curious.length === 0 ? (
+              <p className="text-center text-muted-foreground">Sin curiosidades por el momento.</p>
+            ) : (
+              <div className="grid gap-6 sm:grid-cols-2">
+                {data.curious.map((a) => (
+                  <ArticleCard key={a.url} article={a} />
+                ))}
+              </div>
+            )}
             <AdSlot />
           </TabsContent>
         </Tabs>
