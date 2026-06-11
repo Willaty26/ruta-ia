@@ -151,7 +151,7 @@ export function MonetizationRoutes() {
                       </p>
                     </div>
                   </div>
-                  {idx === 1 && <AdSlot className="mt-4" height="h-24" label="Espacio Publicitario Google AdSense" />}
+                  {idx === 1 && <AdSlot className="mt-4" height="h-24" label="📘 Guía recomendada en Amazon para acelerar tu ruta con IA" variant={1} />}
                 </div>
               ))}
             </TabsContent>
