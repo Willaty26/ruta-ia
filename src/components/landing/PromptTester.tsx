@@ -140,6 +140,9 @@ export function PromptTester() {
                     <Copy className="h-4 w-4" />
                     Copiar Prompt
                   </button>
+                  <p className="mt-3 rounded-lg border border-accent/30 bg-accent/10 p-3 text-xs leading-relaxed text-foreground/80">
+                    <span className="font-bold text-accent">Tip de Oro:</span> Pega este prompt en ChatGPT y reemplaza lo que está entre corchetes <code className="rounded bg-secondary px-1 py-0.5 text-[10px]">[ ]</code> con tu idea específica para obtener un resultado perfecto.
+                  </p>
                 </div>
               ) : (
                 <div className="flex h-[280px] flex-col items-center justify-center rounded-xl border-2 border-dashed border-border bg-secondary/30 p-6 text-center">
