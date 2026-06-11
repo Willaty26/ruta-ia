@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as GuiasGanarDineroDesdeCasaIaRouteImport } from './routes/guias.ganar-dinero-desde-casa-ia'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
@@ -22,31 +23,41 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GuiasGanarDineroDesdeCasaIaRoute =
+  GuiasGanarDineroDesdeCasaIaRouteImport.update({
+    id: '/guias/ganar-dinero-desde-casa-ia',
+    path: '/guias/ganar-dinero-desde-casa-ia',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/guias/ganar-dinero-desde-casa-ia': typeof GuiasGanarDineroDesdeCasaIaRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/guias/ganar-dinero-desde-casa-ia': typeof GuiasGanarDineroDesdeCasaIaRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/guias/ganar-dinero-desde-casa-ia': typeof GuiasGanarDineroDesdeCasaIaRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/sitemap.xml'
+  fullPaths: '/' | '/sitemap.xml' | '/guias/ganar-dinero-desde-casa-ia'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/sitemap.xml'
-  id: '__root__' | '/' | '/sitemap.xml'
+  to: '/' | '/sitemap.xml' | '/guias/ganar-dinero-desde-casa-ia'
+  id: '__root__' | '/' | '/sitemap.xml' | '/guias/ganar-dinero-desde-casa-ia'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  GuiasGanarDineroDesdeCasaIaRoute: typeof GuiasGanarDineroDesdeCasaIaRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +76,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/guias/ganar-dinero-desde-casa-ia': {
+      id: '/guias/ganar-dinero-desde-casa-ia'
+      path: '/guias/ganar-dinero-desde-casa-ia'
+      fullPath: '/guias/ganar-dinero-desde-casa-ia'
+      preLoaderRoute: typeof GuiasGanarDineroDesdeCasaIaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  GuiasGanarDineroDesdeCasaIaRoute: GuiasGanarDineroDesdeCasaIaRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
