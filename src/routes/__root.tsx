@@ -80,6 +80,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "Aprende y Gana con IA" },
       { name: "description", content: "AI Earning Path is a modern web app that helps beginners learn AI and find income generation methods." },
       { name: "author", content: "Lovable" },
+      { name: "google-site-verification", content: "s4DODBSjpKz_O-xQnZI-3lXsUbIdwm9mcM6RTgW6Org" },
       { property: "og:title", content: "Aprende y Gana con IA" },
       { property: "og:description", content: "AI Earning Path is a modern web app that helps beginners learn AI and find income generation methods." },
       { property: "og:type", content: "website" },
