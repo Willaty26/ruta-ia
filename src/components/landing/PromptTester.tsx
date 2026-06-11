@@ -109,7 +109,7 @@ export function PromptTester() {
                 </div>
               ) : (
                 <div className="flex h-[280px] flex-col items-center justify-center rounded-xl border-2 border-dashed border-border bg-secondary/30 p-6 text-center">
-                  <Wand2 className="h-8 w-8 text-muted-foreground/60" />
+                  <Wand2 className="h-8 w-8 text-muted-foreground" />
                   <p className="mt-3 text-sm text-muted-foreground">
                     Selecciona tu perfil para revelar un prompt personalizado.
                   </p>
