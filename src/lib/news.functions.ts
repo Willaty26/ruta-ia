@@ -16,7 +16,7 @@ export type NewsPayload = {
 };
 
 type CacheEntry = { payload: NewsPayload; expiresAt: number };
-const CACHE_TTL_MS = 1000 * 60 * 60 * 6; // 6 horas
+const CACHE_TTL_MS = 1000 * 60 * 60 * 12; // 12 horas (2 actualizaciones/día)
 let cache: CacheEntry | null = null;
 
 function hostnameOf(url: string): string {
