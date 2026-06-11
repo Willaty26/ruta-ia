@@ -17,7 +17,7 @@ const FAQS = [
   },
   {
     q: "¿En cuánto tiempo puedo ver mis primeros ingresos?",
-    a: "Depende del esfuerzo y la ruta elegida, pero la mayoría de usuarios que aplican los pasos diariamente consiguen sus primeros euros entre 7 y 21 días.",
+    a: "Depende del esfuerzo y la ruta elegida, pero la mayoría de usuarios que aplican los pasos diariamente consiguen sus primeros ingresos entre 7 y 21 días.",
   },
   {
     q: "¿Qué herramientas de IA necesito para empezar?",

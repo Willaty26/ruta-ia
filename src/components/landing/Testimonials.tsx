@@ -6,8 +6,8 @@ const TESTIMONIALS = [
     role: "Estudiante de Marketing",
     avatar: "LM",
     quote:
-      "En 2 semanas usando los prompts empecé a vender mini-ebooks. Me hizo 280 € extra el primer mes sin saber nada de IA.",
-    result: "+280 € primer mes",
+      "En 2 semanas usando los prompts empecé a vender mini-ebooks. Conseguí mis primeros ingresos extra el primer mes sin saber nada de IA.",
+    result: "Primeros ingresos en 1 mes",
     color: "from-primary to-primary-glow",
   },
   {

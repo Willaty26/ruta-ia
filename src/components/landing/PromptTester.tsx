@@ -38,14 +38,14 @@ Al final, hazme 2 preguntas para evaluar si realmente entendí el tema.`,
       `Actúa como un consultor de negocios senior con experiencia lanzando 20+ startups bootstrapping (sin inversión externa).
 
 Mi idea es: '[DESCRIBE TU IDEA EN 2 FRASES]'.
-Mi presupuesto inicial: [X USD].
+Mi presupuesto inicial: [pequeño / medio / sin presupuesto].
 Tiempo disponible por semana: [X horas].
 País / mercado objetivo: [PAÍS / NICHO].
 
 Entrégame un plan de acción brutal y realista:
 
 1) Análisis FODA en 4 bullets cortos (fortalezas, debilidades, oportunidades, amenazas reales del mercado actual).
-2) Validación de demanda en 48h: 3 experimentos concretos que puedo hacer ESTA SEMANA sin gastar más de [X USD] (landing + ads, encuesta, pre-venta, comunidad).
+2) Validación de demanda en 48h: 3 experimentos concretos que puedo hacer ESTA SEMANA con presupuesto mínimo (landing + ads, encuesta, pre-venta, comunidad).
 3) Definición del MVP mínimo viable que puedo construir en 7 días con herramientas no-code (cuáles y por qué).
 4) 3 modelos de monetización ordenados por facilidad de implementación, con precio sugerido en mi mercado.
 5) Plan de los primeros 30 días dividido por semanas, con 1 objetivo medible por semana.

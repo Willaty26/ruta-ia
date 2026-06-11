@@ -44,7 +44,7 @@ const ROUTES: Route[] = [
       {
         title: "Especialízate en un nicho que pague bien",
         detail:
-          "Los redactores generalistas cobran 0.02 €/palabra; los especializados en SaaS B2B, fintech, salud o ciberseguridad cobran 0.15–0.50 €/palabra. Elige UN nicho, lee los 20 blogs más leídos del sector durante una semana y aprende su jerga. Crea 3 artículos demo en ese nicho para mostrar autoridad sin tener clientes.",
+          "Los redactores generalistas cobran tarifas muy bajas por palabra; los especializados en nichos técnicos (SaaS B2B, fintech, salud, ciberseguridad) cobran entre 5 y 10 veces más por el mismo tiempo invertido. Elige UN nicho, lee los 20 blogs más leídos del sector durante una semana y aprende su jerga. Crea 3 artículos demo en ese nicho para mostrar autoridad sin tener clientes.",
         tip: "Cobra por artículo o por proyecto, NUNCA por palabra. Cobrar por palabra te castiga por escribir mejor.",
         tool: "Perplexity (research) + Ahrefs Webmaster Tools (gratis)",
       },
@@ -58,7 +58,7 @@ const ROUTES: Route[] = [
       {
         title: "Cierra contratos mensuales, no piezas sueltas",
         detail:
-          "Las piezas sueltas son agotadoras y mal pagadas. Ofrece paquetes mensuales: 4 artículos SEO + 8 newsletters por 800–1500 €/mes. Prospecta así: identifica 50 empresas en tu nicho con blog desactualizado (último post hace >3 meses), envía email personalizado con auditoría rápida y propuesta concreta de calendario editorial para 3 meses.",
+          "Las piezas sueltas son agotadoras y mal pagadas. Ofrece paquetes mensuales: 4 artículos SEO + 8 newsletters al mes a una tarifa fija que refleje el tiempo y la consistencia que aportas. Prospecta así: identifica 50 empresas en tu nicho con blog desactualizado (último post hace >3 meses), envía email personalizado con auditoría rápida y propuesta concreta de calendario editorial para 3 meses.",
         tip: "Pide siempre un 30–50% de anticipo y firma un acuerdo simple por email. Sin anticipo, sin trabajo.",
         tool: "Upwork + Contra + LinkedIn Sales Navigator (trial)",
       },
@@ -73,15 +73,15 @@ const ROUTES: Route[] = [
       {
         title: "Define un servicio empaquetado, no 'hago páginas web'",
         detail:
-          "Vende UN producto claro: 'Landing de captación para [restaurante/abogado/clínica/estudio] entregada en 48h por 350 €'. Cuanto más específico, más fácil de vender. Crea una página de aterrizaje propia con 3 ejemplos del antes/después, testimonios (aunque sean de amigos al principio) y un calendario Calendly para reservar llamada.",
-        tip: "Cobrar 350–800 € por landing es 10x más rentable que cobrar 1500 € por una web 'completa' que nunca termina.",
+          "Vende UN producto claro: 'Landing de captación para [restaurante/abogado/clínica/estudio] entregada en 48h, precio fijo cerrado'. Cuanto más específico, más fácil de vender. Crea una página de aterrizaje propia con 3 ejemplos del antes/después, testimonios (aunque sean de amigos al principio) y un calendario Calendly para reservar llamada.",
+        tip: "Cobrar un precio fijo por landing entregada en 48h es mucho más rentable que cobrar por una web 'completa' que nunca termina.",
         tool: "Lovable + Framer + Calendly",
       },
       {
         title: "Crea 3 plantillas reutilizables y un proceso de entrega",
         detail:
           "Construye una plantilla por vertical (restaurante, profesional de salud, e-commerce básico). Cada plantilla incluye: hero con reserva/CTA, sección de servicios o menú, testimonios, mapa y contacto, integración con WhatsApp Business y formulario que envía al email del cliente. Documenta tu proceso en un Notion: cuestionario inicial al cliente → diseño en 24h → revisión → publicación. Así puedes entregar en 48h sin morir.",
-        tip: "Cobra extra (50–100 €/mes) por mantenimiento, hosting gestionado y cambios menores — esto crea ingresos recurrentes.",
+        tip: "Cobra una cuota mensual extra por mantenimiento, hosting gestionado y cambios menores — así creas ingresos recurrentes que valen el poco tiempo que les dedicas.",
         tool: "Lovable + Notion (proceso) + Unsplash + Cloudflare",
       },
       {
