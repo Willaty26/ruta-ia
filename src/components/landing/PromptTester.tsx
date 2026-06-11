@@ -156,7 +156,11 @@ export function PromptTester() {
           </div>
 
           <aside className="hidden lg:block">
-            <AdSlot height="h-full min-h-[420px]" label="Anuncio · 300x600" />
+            <AdSlot
+              height="h-full min-h-[420px]"
+              label="📚 Lleva tus prompts al siguiente nivel con este libro de IA en Amazon"
+              variant={0}
+            />
           </aside>
         </div>
       </div>
