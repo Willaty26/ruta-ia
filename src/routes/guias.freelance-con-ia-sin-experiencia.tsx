@@ -7,8 +7,7 @@ export const Route = createFileRoute("/guias/freelance-con-ia-sin-experiencia")(
   head: () => ({
     meta: [
       {
-        title:
-          "Cómo Ser Freelance con IA sin Experiencia en 2026 — Guía Completa | Ruta IA",
+        title: "Freelance con IA sin Experiencia — Guía 2026 | Ruta IA",
       },
       {
         name: "description",

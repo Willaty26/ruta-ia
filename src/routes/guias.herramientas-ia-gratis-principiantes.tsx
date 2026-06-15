@@ -7,8 +7,7 @@ export const Route = createFileRoute("/guias/herramientas-ia-gratis-principiante
   head: () => ({
     meta: [
       {
-        title:
-          "15 Herramientas de IA Gratis para Principiantes en 2026 | Ruta IA",
+        title: "15 Herramientas IA Gratis para Principiantes 2026 | Ruta IA",
       },
       {
         name: "description",

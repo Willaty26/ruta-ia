@@ -7,8 +7,7 @@ export const Route = createFileRoute("/guias/prompts-chatgpt-ganar-dinero-2026")
   head: () => ({
     meta: [
       {
-        title:
-          "20 Prompts de ChatGPT para Ganar Dinero en 2026 (Copiar y Pegar) | Ruta IA",
+        title: "20 Prompts ChatGPT para Ganar Dinero en 2026 | Ruta IA",
       },
       {
         name: "description",

@@ -110,7 +110,10 @@ export function PromptTester() {
             </label>
             <div className="mt-2">
               <Select value={selected} onValueChange={setSelected}>
-                <SelectTrigger className="h-12 w-full bg-secondary text-base">
+                <SelectTrigger
+                  aria-label="Selecciona tu perfil para generar un prompt"
+                  className="h-12 w-full bg-secondary text-base"
+                >
                   <SelectValue placeholder="Selecciona una opción..." />
                 </SelectTrigger>
                 <SelectContent>

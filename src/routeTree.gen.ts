@@ -13,7 +13,10 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as PoliticaDePrivacidadRouteImport } from './routes/politica-de-privacidad'
 import { Route as NewsRouteImport } from './routes/news'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as GuiasPromptsChatgptGanarDinero2026RouteImport } from './routes/guias.prompts-chatgpt-ganar-dinero-2026'
+import { Route as GuiasHerramientasIaGratisPrincipiantesRouteImport } from './routes/guias.herramientas-ia-gratis-principiantes'
 import { Route as GuiasGanarDineroDesdeCasaIaRouteImport } from './routes/guias.ganar-dinero-desde-casa-ia'
+import { Route as GuiasFreelanceConIaSinExperienciaRouteImport } from './routes/guias.freelance-con-ia-sin-experiencia'
 
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
@@ -35,10 +38,28 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GuiasPromptsChatgptGanarDinero2026Route =
+  GuiasPromptsChatgptGanarDinero2026RouteImport.update({
+    id: '/guias/prompts-chatgpt-ganar-dinero-2026',
+    path: '/guias/prompts-chatgpt-ganar-dinero-2026',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const GuiasHerramientasIaGratisPrincipiantesRoute =
+  GuiasHerramientasIaGratisPrincipiantesRouteImport.update({
+    id: '/guias/herramientas-ia-gratis-principiantes',
+    path: '/guias/herramientas-ia-gratis-principiantes',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const GuiasGanarDineroDesdeCasaIaRoute =
   GuiasGanarDineroDesdeCasaIaRouteImport.update({
     id: '/guias/ganar-dinero-desde-casa-ia',
     path: '/guias/ganar-dinero-desde-casa-ia',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const GuiasFreelanceConIaSinExperienciaRoute =
+  GuiasFreelanceConIaSinExperienciaRouteImport.update({
+    id: '/guias/freelance-con-ia-sin-experiencia',
+    path: '/guias/freelance-con-ia-sin-experiencia',
     getParentRoute: () => rootRouteImport,
   } as any)
 
@@ -47,14 +68,20 @@ export interface FileRoutesByFullPath {
   '/news': typeof NewsRoute
   '/politica-de-privacidad': typeof PoliticaDePrivacidadRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/guias/freelance-con-ia-sin-experiencia': typeof GuiasFreelanceConIaSinExperienciaRoute
   '/guias/ganar-dinero-desde-casa-ia': typeof GuiasGanarDineroDesdeCasaIaRoute
+  '/guias/herramientas-ia-gratis-principiantes': typeof GuiasHerramientasIaGratisPrincipiantesRoute
+  '/guias/prompts-chatgpt-ganar-dinero-2026': typeof GuiasPromptsChatgptGanarDinero2026Route
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/news': typeof NewsRoute
   '/politica-de-privacidad': typeof PoliticaDePrivacidadRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/guias/freelance-con-ia-sin-experiencia': typeof GuiasFreelanceConIaSinExperienciaRoute
   '/guias/ganar-dinero-desde-casa-ia': typeof GuiasGanarDineroDesdeCasaIaRoute
+  '/guias/herramientas-ia-gratis-principiantes': typeof GuiasHerramientasIaGratisPrincipiantesRoute
+  '/guias/prompts-chatgpt-ganar-dinero-2026': typeof GuiasPromptsChatgptGanarDinero2026Route
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -62,7 +89,10 @@ export interface FileRoutesById {
   '/news': typeof NewsRoute
   '/politica-de-privacidad': typeof PoliticaDePrivacidadRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/guias/freelance-con-ia-sin-experiencia': typeof GuiasFreelanceConIaSinExperienciaRoute
   '/guias/ganar-dinero-desde-casa-ia': typeof GuiasGanarDineroDesdeCasaIaRoute
+  '/guias/herramientas-ia-gratis-principiantes': typeof GuiasHerramientasIaGratisPrincipiantesRoute
+  '/guias/prompts-chatgpt-ganar-dinero-2026': typeof GuiasPromptsChatgptGanarDinero2026Route
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -71,21 +101,30 @@ export interface FileRouteTypes {
     | '/news'
     | '/politica-de-privacidad'
     | '/sitemap.xml'
+    | '/guias/freelance-con-ia-sin-experiencia'
     | '/guias/ganar-dinero-desde-casa-ia'
+    | '/guias/herramientas-ia-gratis-principiantes'
+    | '/guias/prompts-chatgpt-ganar-dinero-2026'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/news'
     | '/politica-de-privacidad'
     | '/sitemap.xml'
+    | '/guias/freelance-con-ia-sin-experiencia'
     | '/guias/ganar-dinero-desde-casa-ia'
+    | '/guias/herramientas-ia-gratis-principiantes'
+    | '/guias/prompts-chatgpt-ganar-dinero-2026'
   id:
     | '__root__'
     | '/'
     | '/news'
     | '/politica-de-privacidad'
     | '/sitemap.xml'
+    | '/guias/freelance-con-ia-sin-experiencia'
     | '/guias/ganar-dinero-desde-casa-ia'
+    | '/guias/herramientas-ia-gratis-principiantes'
+    | '/guias/prompts-chatgpt-ganar-dinero-2026'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -93,7 +132,10 @@ export interface RootRouteChildren {
   NewsRoute: typeof NewsRoute
   PoliticaDePrivacidadRoute: typeof PoliticaDePrivacidadRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  GuiasFreelanceConIaSinExperienciaRoute: typeof GuiasFreelanceConIaSinExperienciaRoute
   GuiasGanarDineroDesdeCasaIaRoute: typeof GuiasGanarDineroDesdeCasaIaRoute
+  GuiasHerramientasIaGratisPrincipiantesRoute: typeof GuiasHerramientasIaGratisPrincipiantesRoute
+  GuiasPromptsChatgptGanarDinero2026Route: typeof GuiasPromptsChatgptGanarDinero2026Route
 }
 
 declare module '@tanstack/react-router' {
@@ -126,11 +168,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/guias/prompts-chatgpt-ganar-dinero-2026': {
+      id: '/guias/prompts-chatgpt-ganar-dinero-2026'
+      path: '/guias/prompts-chatgpt-ganar-dinero-2026'
+      fullPath: '/guias/prompts-chatgpt-ganar-dinero-2026'
+      preLoaderRoute: typeof GuiasPromptsChatgptGanarDinero2026RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guias/herramientas-ia-gratis-principiantes': {
+      id: '/guias/herramientas-ia-gratis-principiantes'
+      path: '/guias/herramientas-ia-gratis-principiantes'
+      fullPath: '/guias/herramientas-ia-gratis-principiantes'
+      preLoaderRoute: typeof GuiasHerramientasIaGratisPrincipiantesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/guias/ganar-dinero-desde-casa-ia': {
       id: '/guias/ganar-dinero-desde-casa-ia'
       path: '/guias/ganar-dinero-desde-casa-ia'
       fullPath: '/guias/ganar-dinero-desde-casa-ia'
       preLoaderRoute: typeof GuiasGanarDineroDesdeCasaIaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guias/freelance-con-ia-sin-experiencia': {
+      id: '/guias/freelance-con-ia-sin-experiencia'
+      path: '/guias/freelance-con-ia-sin-experiencia'
+      fullPath: '/guias/freelance-con-ia-sin-experiencia'
+      preLoaderRoute: typeof GuiasFreelanceConIaSinExperienciaRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -141,7 +204,13 @@ const rootRouteChildren: RootRouteChildren = {
   NewsRoute: NewsRoute,
   PoliticaDePrivacidadRoute: PoliticaDePrivacidadRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  GuiasFreelanceConIaSinExperienciaRoute:
+    GuiasFreelanceConIaSinExperienciaRoute,
   GuiasGanarDineroDesdeCasaIaRoute: GuiasGanarDineroDesdeCasaIaRoute,
+  GuiasHerramientasIaGratisPrincipiantesRoute:
+    GuiasHerramientasIaGratisPrincipiantesRoute,
+  GuiasPromptsChatgptGanarDinero2026Route:
+    GuiasPromptsChatgptGanarDinero2026Route,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

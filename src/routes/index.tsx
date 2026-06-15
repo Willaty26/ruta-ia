@@ -41,7 +41,7 @@ const FAQ_ENTRIES = [
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Ruta IA: Aprende y Gana Dinero con Inteligencia Artificial en 2026" },
+      { title: "Ruta IA: Aprende y Gana Dinero con IA en 2026" },
       {
         name: "description",
         content:
