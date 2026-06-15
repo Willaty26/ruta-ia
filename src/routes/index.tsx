@@ -41,17 +41,18 @@ const FAQ_ENTRIES = [
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Ruta IA: Aprende y Gana — Domina la IA y genera ingresos" },
+      { title: "Ruta IA: Aprende y Gana Dinero con Inteligencia Artificial en 2026" },
       {
         name: "description",
         content:
-          "Plataforma interactiva para principiantes en IA. Prompts listos, rutas de monetización paso a paso y directorio de herramientas premium.",
+          "Aprende a usar la IA y gana dinero desde casa con prompts listos, herramientas gratis y rutas de monetización paso a paso. Sin experiencia técnica.",
       },
-      { property: "og:title", content: "Ruta IA: Aprende y Gana" },
+      { name: "keywords", content: "ganar dinero con ia, prompts chatgpt, herramientas ia gratis, freelance con ia, inteligencia artificial principiantes, ganar dinero desde casa" },
+      { property: "og:title", content: "Ruta IA: Aprende y Gana Dinero con IA" },
       {
         property: "og:description",
         content:
-          "Herramientas gratuitas, guías paso a paso y prompts listos para usar. Empieza tu ruta hoy.",
+          "Prompts listos, guías paso a paso y herramientas de IA gratuitas para empezar a generar ingresos hoy mismo.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://rutadeia.com/" },
