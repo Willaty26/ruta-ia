@@ -88,7 +88,8 @@ export function ToolsDirectory() {
               </p>
               <a
                 href={tool.url}
-                rel="sponsored noopener"
+                target="_blank"
+                rel="sponsored noopener noreferrer"
                 className="mt-5 inline-flex items-center justify-center gap-1 rounded-lg bg-accent px-4 py-2.5 text-sm font-bold text-accent-foreground transition-all hover:scale-[1.02] hover:brightness-110 group-hover:shadow-[var(--shadow-glow-accent)]"
               >
                 Probar Gratis
