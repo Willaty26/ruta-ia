@@ -7,8 +7,7 @@ export const Route = createFileRoute("/guias/ganar-dinero-desde-casa-ia")({
   head: () => ({
     meta: [
       {
-        title:
-          "Ganar Dinero Desde Casa con IA en 2026 — Guía Paso a Paso | Ruta IA",
+        title: "Ganar Dinero con IA Desde Casa 2026 | Ruta IA",
       },
       {
         name: "description",

@@ -95,6 +95,7 @@ function ArticleCard({ article }: { article: NewsArticle }) {
             variant="ghost"
             size="sm"
             onClick={() => shareArticle(article)}
+            aria-label={`Compartir artículo: ${article.title}`}
             className="text-muted-foreground hover:text-primary"
           >
             <Share2 className="mr-1.5 h-4 w-4" />
@@ -138,7 +139,7 @@ function NewsPage() {
 
         <header className="mt-8 text-center">
           <h1 className="bg-[var(--gradient-primary)] bg-clip-text text-4xl font-extrabold tracking-tight text-transparent sm:text-5xl lg:text-6xl">
-            IA al Día: Noticias y Datos Fascinantes
+            Actualidad y Noticias de IA — Ruta IA
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-base text-muted-foreground sm:text-lg">
             Titulares reales extraídos de la web, con enlace a la fuente original. Se actualiza solo cada pocas horas.
