@@ -74,6 +74,10 @@ export const Route = createFileRoute("/guias/prompts-chatgpt-ganar-dinero-2026")
           author: { "@type": "Organization", name: "Ruta IA" },
         }),
       },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(faqJsonLd(FAQS)),
+      },
     ],
   }),
   component: PromptsGuide,
@@ -269,6 +273,8 @@ function PromptsGuide() {
               </section>
             ))}
           </div>
+
+          <FAQSection items={FAQS} />
 
           <section className="mt-12 rounded-2xl border border-accent/30 bg-gradient-to-br from-accent/10 via-card to-card p-6 text-center sm:p-10">
             <h2 className="text-2xl font-black tracking-tight sm:text-3xl">
