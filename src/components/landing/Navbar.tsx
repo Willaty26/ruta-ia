@@ -10,6 +10,10 @@ export function Navbar() {
           <img
             src={logoAsset.url}
             alt="Ruta IA logo"
+            width={36}
+            height={36}
+            decoding="async"
+            fetchPriority="high"
             className="h-9 w-9 rounded-xl object-contain drop-shadow-[0_0_12px_color-mix(in_oklab,var(--primary)_50%,transparent)]"
           />
           <span className="text-base font-extrabold tracking-tight">
