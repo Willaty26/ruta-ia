@@ -1,13 +1,12 @@
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import { HelpCircle } from "lucide-react";
+import { ChevronDown, HelpCircle } from "lucide-react";
 
 export type FAQItem = { q: string; a: string };
 
+/**
+ * FAQ sin JavaScript: usa <details>/<summary> nativos del navegador.
+ * Elimina la dependencia de Radix Accordion en las guías, mejorando
+ * TBT, INP y reduciendo JS enviado al móvil.
+ */
 export function FAQSection({ items }: { items: FAQItem[] }) {
   return (
     <section className="mt-12 rounded-2xl border border-border bg-card p-6 shadow-xl sm:p-8">
@@ -19,18 +18,19 @@ export function FAQSection({ items }: { items: FAQItem[] }) {
           Preguntas frecuentes
         </h2>
       </div>
-      <Accordion type="single" collapsible className="w-full">
+      <div className="divide-y divide-border">
         {items.map((item, i) => (
-          <AccordionItem key={i} value={`faq-${i}`}>
-            <AccordionTrigger className="text-base font-semibold sm:text-lg">
-              {item.q}
-            </AccordionTrigger>
-            <AccordionContent className="text-sm leading-relaxed text-muted-foreground sm:text-base">
+          <details key={i} className="group py-4 [&_svg.chev]:open:rotate-180">
+            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-base font-semibold sm:text-lg">
+              <span>{item.q}</span>
+              <ChevronDown className="chev h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200" />
+            </summary>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
               {item.a}
-            </AccordionContent>
-          </AccordionItem>
+            </p>
+          </details>
         ))}
-      </Accordion>
+      </div>
     </section>
   );
 }
