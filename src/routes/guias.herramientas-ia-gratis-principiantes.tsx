@@ -2,6 +2,30 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, CheckCircle2, ExternalLink } from "lucide-react";
 import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
+import { FAQSection, faqJsonLd, type FAQItem } from "@/components/landing/FAQSection";
+
+const FAQS: FAQItem[] = [
+  {
+    q: "¿Las 15 herramientas son 100% gratuitas?",
+    a: "Todas tienen un plan gratuito real y útil para empezar (no es solo una prueba de 7 días). Algunas, como ElevenLabs o Runway, dan créditos limitados al mes; otras como ChatGPT, Claude o Canva son usables a diario sin pagar. El detalle del plan gratis está indicado en cada herramienta.",
+  },
+  {
+    q: "¿Cuál recomiendan para principiantes absolutos?",
+    a: "Empieza solo con ChatGPT, Canva AI y CapCut. Esas tres cubren texto, diseño y vídeo, que es el 90% de lo que vas a necesitar los primeros meses. Añade el resto cuando una tarea concreta te pida una herramienta más especializada.",
+  },
+  {
+    q: "¿Puedo usar el contenido generado por IA con fines comerciales?",
+    a: "Sí en la mayoría de casos. ChatGPT, Claude, Canva, Leonardo y Runway permiten uso comercial incluso en su plan gratuito. Revisa siempre los términos de cada herramienta (Midjourney, por ejemplo, exige plan pago para uso comercial completo).",
+  },
+  {
+    q: "¿Necesito tarjeta de crédito para registrarme?",
+    a: "No para la mayoría. ChatGPT, Claude, Gemini, Perplexity, Canva, CapCut y Notion AI piden solo email. ElevenLabs, Runway o Suno tampoco la piden para el plan free. Solo se exige tarjeta si decides subir a un plan de pago.",
+  },
+  {
+    q: "¿Qué herramienta es mejor para crear imágenes gratis?",
+    a: "Microsoft Copilot da 15 imágenes/día con DALL·E 3 sin coste, y Leonardo.ai ofrece 150 tokens diarios con estilos más artísticos. Para diseño visual completo (no solo generar imágenes), Canva AI sigue siendo la opción más versátil.",
+  },
+];
 
 export const Route = createFileRoute("/guias/herramientas-ia-gratis-principiantes")({
   head: () => ({

@@ -2,6 +2,30 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, CheckCircle2, Rocket } from "lucide-react";
 import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
+import { FAQSection, faqJsonLd, type FAQItem } from "@/components/landing/FAQSection";
+
+const FAQS: FAQItem[] = [
+  {
+    q: "¿En cuánto tiempo conseguiré mi primer cliente freelance?",
+    a: "Con 10 propuestas diarias bien personalizadas durante 14 días, lo normal es cerrar entre 2 y 5 primeros clientes. Si llevas un mes sin respuestas, suele ser señal de propuestas genéricas o de un servicio mal definido, no de falta de demanda.",
+  },
+  {
+    q: "¿Qué hago si no tengo portafolio ni experiencia previa?",
+    a: "Crea 3 proyectos ficticios pero impecables para marcas reales que admires (un copy, un diseño o un vídeo según tu servicio) y publícalos en Notion, Behance o Carrd. Un portafolio ficticio bien hecho convierte tan bien como uno real al principio.",
+  },
+  {
+    q: "¿Cuánto debo cobrar al principio?",
+    a: "Cobra entre el 50% y el 80% del precio de mercado para tu primer cliente. Nunca trabajes gratis: atrae clientes que no respetan tu tiempo. Sube el precio un 30% cada 3 entregas con reseña 5★ y, tras 10 reseñas, sube otro 50% y descarta al cliente más barato.",
+  },
+  {
+    q: "¿Qué plataforma es mejor para empezar?",
+    a: "Para público hispano y baja competencia: Workana. Para proyectos internacionales bien pagados: Upwork. Para paquetes fijos sencillos: Fiverr. Para acceder a decisores directamente: LinkedIn. Lo recomendable es elegir solo 1-2 plataformas y dominarlas.",
+  },
+  {
+    q: "¿Necesito declararme autónomo desde el primer cliente?",
+    a: "Depende de tu país y de los ingresos. En España hay que darse de alta como autónomo cuando los ingresos son recurrentes y superan ciertos umbrales. La recomendación es consultar con un gestor en cuanto pases los 300-500 € mensuales para evitar sustos.",
+  },
+];
 
 export const Route = createFileRoute("/guias/freelance-con-ia-sin-experiencia")({
   head: () => ({
