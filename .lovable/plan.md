@@ -1,64 +1,71 @@
-# Ruta IA: Aprende y Gana — Plan
+## Objetivo
+Añadir secciones de **FAQ visibles** + **JSON-LD `FAQPage`** (Schema.org) en las 4 guías existentes para conseguir rich snippets en Google (resultados con preguntas desplegables).
 
-Single-page app en `src/routes/index.tsx` con tema oscuro (gris muy oscuro + acentos morado neón y verde brillante).
+## Por qué importa
+- Google muestra FAQs directamente en resultados → más CTR.
+- Schema.org `FAQPage` es uno de los pocos rich results que siguen activos en 2026.
+- Refuerza autoridad temática (long-tail keywords en formato pregunta).
 
-## Diseño / tokens
+## Páginas afectadas
+1. `/guias/ganar-dinero-desde-casa-ia`
+2. `/guias/prompts-chatgpt-ganar-dinero-2026`
+3. `/guias/herramientas-ia-gratis-principiantes`
+4. `/guias/freelance-con-ia-sin-experiencia`
 
-Actualizar `src/styles.css`:
-- Forzar modo oscuro por defecto (aplicar clase `dark` en el `<html>` desde `__root.tsx`).
-- Fondo base ~ `oklch(0.16 0.01 270)`, superficie cards `oklch(0.20 0.012 270)`.
-- `--primary` morado neón `oklch(0.65 0.28 295)` con `--primary-glow`.
-- `--accent` verde brillante `oklch(0.82 0.22 145)` para CTAs.
-- Gradientes y sombras: `--gradient-primary`, `--shadow-glow`.
-- Tipografía: Inter (cargada con `<link>` en `__root.tsx`).
-- SEO: title, description, og tags en `index.tsx` head().
+## Qué se añadirá en cada guía
 
-## Estructura de componentes
+### A) Sección visible FAQ (UI)
+Componente `<Accordion>` (ya disponible en shadcn) con 5–6 preguntas por guía. Diseño coherente con el resto: tarjeta con borde, fondo `card`, tipografía existente.
 
-Todo en `src/routes/index.tsx` + componentes pequeños en `src/components/landing/`:
+Ejemplo de preguntas por guía (adaptadas al contenido):
 
+**Ganar dinero desde casa con IA**
+- ¿Cuánto dinero se puede ganar realmente con IA desde casa?
+- ¿Necesito experiencia técnica para empezar?
+- ¿Qué método es el más rápido para generar ingresos?
+- ¿Cuánto tiempo tarda en verse resultados?
+- ¿Es legal usar contenido generado por IA para vender?
+
+**Prompts ChatGPT**
+- ¿Funcionan los prompts en la versión gratuita de ChatGPT?
+- ¿Puedo modificar los prompts?
+- ¿Cuál es el mejor prompt para empezar a ganar dinero?
+- ¿Sirven también para Claude o Gemini?
+
+**Herramientas IA gratis**
+- ¿Las herramientas son 100% gratuitas?
+- ¿Cuál recomiendan para principiantes absolutos?
+- ¿Puedo usar el contenido generado comercialmente?
+- ¿Necesito tarjeta de crédito para registrarme?
+
+**Freelance con IA sin experiencia**
+- ¿En cuánto tiempo conseguiré mi primer cliente?
+- ¿Qué hago si no tengo portafolio?
+- ¿Cuánto debo cobrar al principio?
+- ¿Qué plataforma es mejor para empezar?
+
+### B) JSON-LD `FAQPage` (invisible, para Google)
+Se añade al array `scripts` del `head()` de cada ruta, junto al schema `Article` existente. Estructura estándar:
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "...", "acceptedAnswer": { "@type": "Answer", "text": "..." } }
+  ]
+}
 ```
-landing/
-  Navbar.tsx          // logo + anclas (Probador, Rutas, Herramientas)
-  Hero.tsx            // título XL + subtítulo + CTA (scroll a #probador)
-  PromptTester.tsx    // Sección 1
-  MonetizationRoutes.tsx // Sección 2 (Tabs)
-  ToolsDirectory.tsx  // Sección 3 (filtro por categoría)
-  AdSlot.tsx          // banner punteado reutilizable
-  Footer.tsx
-```
 
-### 1. Hero
-- H1 enorme con gradiente morado→verde: "Domina la IA y Activa tus Fuentes de Ingreso".
-- Subtítulo y botón `accent` con glow → `scrollIntoView` a `#probador`.
+Los textos del JSON-LD coinciden exactamente con los visibles en la UI (requisito de Google).
 
-### 2. Probador de Prompts (`PromptTester`)
-- shadcn `Select` con 4 ocupaciones.
-- Estado local → renderiza `Card` con prompt específico (textos hardcodeados en un objeto).
-- Botón "Copiar Prompt" → `navigator.clipboard.writeText` + toast sonner "¡Copiado!".
+## Detalles técnicos
+- Reutilizo `@/components/ui/accordion` (ya instalado).
+- Las preguntas/respuestas se definen una sola vez por archivo y se usan tanto en la UI como en el JSON-LD (DRY, evita desincronización).
+- No toco `sitemap.xml`, metadata existente ni otros archivos.
+- Sin nuevas dependencias, sin migraciones.
 
-### 3. Rutas de Monetización (`MonetizationRoutes`)
-- shadcn `Tabs` con 3 rutas (Creador Express, Redactor Freelance, Micro-Agencia Web).
-- Cada tab: lista vertical de 3 pasos numerados con badge, tip y herramienta recomendada.
-- `AdSlot` integrado entre pasos.
-
-### 4. Directorio de Herramientas (`ToolsDirectory`)
-- Botones de filtro (Todas / Texto / Imagen-Video / Productividad).
-- Grid responsive de cards: nombre, logo simulado (inicial en círculo con gradiente), descripción 1 línea, botón "Probar Gratis ↗" (link `#` con `rel="sponsored noopener"`).
-- ~9–12 herramientas (ChatGPT, Claude, Midjourney, Runway, Notion AI, Perplexity, etc.).
-
-### 5. AdSlots
-- Componente con borde punteado, texto "Espacio Publicitario Google AdSense".
-- Uno en sidebar sticky (visible solo `lg:` junto al Probador) y uno entre pasos de monetización.
-
-## Responsividad
-- Layout mobile-first; navbar colapsa a iconos; grids `grid-cols-1 sm:grid-cols-2 lg:grid-cols-3`.
-- Sidebar publicitaria solo `lg+`; en móvil, banner full-width.
-
-## Técnico
-- TanStack Start, sin nuevas dependencias (sonner, shadcn Tabs/Select/Card/Button ya disponibles).
-- Sin backend / Cloud (no se requiere persistencia).
-- Scroll suave: `html { scroll-behavior: smooth }` en styles.css.
-
-## Entregable
-Una sola pasada de build: tokens en styles.css, dark mode forzado en `__root.tsx`, head SEO + componentes en `index.tsx`, 6 archivos nuevos en `src/components/landing/`.
+## Lo que NO incluye
+- No añade nuevas guías.
+- No cambia el diseño global ni colores.
+- No modifica el home ni el header.
