@@ -2,6 +2,34 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, CheckCircle2, Sparkles, TrendingUp, Wallet } from "lucide-react";
 import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
+import { FAQSection, faqJsonLd, type FAQItem } from "@/components/landing/FAQSection";
+
+const FAQS: FAQItem[] = [
+  {
+    q: "¿Cuánto dinero se puede ganar realmente con IA desde casa?",
+    a: "Depende del método y la dedicación. Ebooks y servicios freelance suelen empezar en 150-800 € al mes los primeros 3 meses. Una micro-agencia de IA con 2-3 clientes recurrentes puede generar 1.500-3.000 € mensuales. Lo importante es elegir un único método y ser constante 90 días.",
+  },
+  {
+    q: "¿Necesito experiencia técnica para empezar?",
+    a: "No. Herramientas como ChatGPT, Midjourney o Canva están diseñadas para usarse en lenguaje natural. Si sabes escribir un email, puedes usar IA. El 80% del éxito está en saber qué pedir (prompts) y en la constancia, no en la parte técnica.",
+  },
+  {
+    q: "¿Qué método es el más rápido para generar los primeros ingresos?",
+    a: "Los servicios freelance asistidos por IA (copywriting, edición de vídeo, traducción) suelen ser los más rápidos: puedes conseguir el primer cliente en 2-3 semanas. Los ebooks y cuentas automatizadas tardan más pero escalan mejor a largo plazo.",
+  },
+  {
+    q: "¿Cuánto tiempo tarda en verse resultados?",
+    a: "Con dedicación de 1-2 horas diarias, lo normal es ver los primeros ingresos entre la semana 3 y la 8. Ingresos estables y recurrentes suelen aparecer entre el mes 3 y el 6. La IA acelera el trabajo, pero no elimina la curva de aprendizaje ni la construcción de reputación.",
+  },
+  {
+    q: "¿Es legal usar contenido generado por IA para vender?",
+    a: "Sí, es legal en la mayoría de países y plataformas (Amazon KDP, Gumroad, Fiverr, Etsy). Algunas plataformas exigen indicarlo explícitamente. La recomendación es siempre revisar y editar el contenido para añadir valor humano y evitar problemas con políticas de plagio o duplicado.",
+  },
+  {
+    q: "¿Necesito invertir dinero al principio?",
+    a: "No es imprescindible. Puedes empezar con los planes gratuitos de ChatGPT, Canva y CapCut. Cuando ya tengas tus primeros ingresos, suscribirte a ChatGPT Plus (20 $/mes) y una herramienta de imagen multiplica la productividad.",
+  },
+];
 
 export const Route = createFileRoute("/guias/ganar-dinero-desde-casa-ia")({
   head: () => ({
@@ -44,6 +72,10 @@ export const Route = createFileRoute("/guias/ganar-dinero-desde-casa-ia")({
           inLanguage: "es",
           author: { "@type": "Organization", name: "Ruta IA" },
         }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(faqJsonLd(FAQS)),
       },
     ],
   }),
@@ -177,6 +209,8 @@ function GuideGanarDinero() {
               </section>
             ))}
           </div>
+
+          <FAQSection items={FAQS} />
 
           <section className="mt-12 rounded-2xl border border-accent/30 bg-gradient-to-br from-accent/10 via-card to-card p-6 text-center sm:p-10">
             <h2 className="text-2xl font-black tracking-tight sm:text-3xl">

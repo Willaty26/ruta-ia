@@ -2,6 +2,30 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Copy, Sparkles } from "lucide-react";
 import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
+import { FAQSection, faqJsonLd, type FAQItem } from "@/components/landing/FAQSection";
+
+const FAQS: FAQItem[] = [
+  {
+    q: "¿Funcionan estos prompts en la versión gratuita de ChatGPT?",
+    a: "Sí. Todos están diseñados para funcionar con GPT-4o mini (gratis). Si los usas en GPT-4o, Claude Sonnet o Gemini 2.5, los resultados serán aún mejores y más largos, pero el plan gratuito da resultados muy decentes.",
+  },
+  {
+    q: "¿Puedo modificar los prompts o tengo que usarlos tal cual?",
+    a: "Modifícalos siempre. Sustituye lo que está entre corchetes [ASÍ] por tu contexto real (tu nicho, tu producto, tu cliente). Cuanto más específico seas, mejor responde la IA. Los prompts son una plantilla, no una fórmula mágica.",
+  },
+  {
+    q: "¿Cuál es el mejor prompt para empezar a ganar dinero rápido?",
+    a: "El de 'Propuesta ganadora para Upwork / Fiverr' es el que más rápido genera ingresos: te permite enviar 10-20 propuestas al día y conseguir tu primer cliente freelance en cuestión de semanas, incluso sin experiencia previa.",
+  },
+  {
+    q: "¿Sirven también para Claude, Gemini o Perplexity?",
+    a: "Sí. Los prompts están escritos en lenguaje natural, sin trucos específicos de ChatGPT. Funcionan en Claude (excelente para textos largos), Gemini (perfecto si usas Google Workspace) y Perplexity (cuando necesitas datos verificables con fuentes).",
+  },
+  {
+    q: "¿Cada cuánto debo cambiar o actualizar los prompts?",
+    a: "Cuando el resultado deje de sorprenderte. Una buena práctica es revisar tu librería de prompts cada 2-3 meses, eliminar los que ya no usas y ajustar los que mejor te funcionan con detalles más específicos de tu negocio.",
+  },
+];
 
 export const Route = createFileRoute("/guias/prompts-chatgpt-ganar-dinero-2026")({
   head: () => ({
@@ -49,6 +73,10 @@ export const Route = createFileRoute("/guias/prompts-chatgpt-ganar-dinero-2026")
           inLanguage: "es",
           author: { "@type": "Organization", name: "Ruta IA" },
         }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(faqJsonLd(FAQS)),
       },
     ],
   }),
@@ -245,6 +273,8 @@ function PromptsGuide() {
               </section>
             ))}
           </div>
+
+          <FAQSection items={FAQS} />
 
           <section className="mt-12 rounded-2xl border border-accent/30 bg-gradient-to-br from-accent/10 via-card to-card p-6 text-center sm:p-10">
             <h2 className="text-2xl font-black tracking-tight sm:text-3xl">
