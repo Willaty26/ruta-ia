@@ -20,25 +20,79 @@ const newsQueryOptions = queryOptions<NewsPayload>({
 });
 
 export const Route = createFileRoute("/news")({
-  head: () => ({
-    meta: [
-      { title: "IA al Día: Noticias y Datos Fascinantes — Ruta IA" },
+  head: ({ loaderData }) => {
+    const payload = loaderData as NewsPayload | undefined;
+    const allArticles = [...(payload?.news ?? []), ...(payload?.curious ?? [])];
+    const datePublished = payload?.fetchedAt ?? new Date().toISOString();
+
+    const scripts: Array<{ type: string; children: string }> = [
       {
-        name: "description",
-        content:
-          "Últimas noticias y curiosidades reales sobre Inteligencia Artificial, actualizadas automáticamente con fuentes verificables.",
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          name: "IA al Día: Noticias y Datos Fascinantes",
+          url: "https://rutadeia.com/news",
+          inLanguage: "es",
+          description:
+            "Últimas noticias y curiosidades reales sobre Inteligencia Artificial, actualizadas automáticamente.",
+          isPartOf: { "@type": "WebSite", name: "Ruta IA", url: "https://rutadeia.com/" },
+        }),
       },
-      { property: "og:title", content: "IA al Día — Noticias y Datos Fascinantes" },
-      {
-        property: "og:description",
-        content:
-          "Noticias reales y curiosidades de IA actualizadas cada pocas horas con enlaces a la fuente original.",
-      },
-      { property: "og:type", content: "website" },
-      { property: "og:url", content: "https://rutadeia.com/news" },
-    ],
-    links: [{ rel: "canonical", href: "https://rutadeia.com/news" }],
-  }),
+    ];
+
+    if (allArticles.length > 0) {
+      scripts.push({
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          itemListOrder: "https://schema.org/ItemListOrderDescending",
+          numberOfItems: allArticles.length,
+          itemListElement: allArticles.map((a, i) => ({
+            "@type": "ListItem",
+            position: i + 1,
+            url: a.url,
+            item: {
+              "@type": "NewsArticle",
+              headline: a.title,
+              description: a.description,
+              url: a.url,
+              inLanguage: "es",
+              datePublished,
+              dateModified: datePublished,
+              isAccessibleForFree: true,
+              articleSection: a.category,
+              mainEntityOfPage: { "@type": "WebPage", "@id": a.url },
+              author: { "@type": "Organization", name: a.source },
+              publisher: { "@type": "Organization", name: a.source },
+            },
+          })),
+        }),
+      });
+    }
+
+    return {
+      meta: [
+        { title: "IA al Día: Noticias y Datos Fascinantes — Ruta IA" },
+        {
+          name: "description",
+          content:
+            "Últimas noticias y curiosidades reales sobre Inteligencia Artificial, actualizadas automáticamente con fuentes verificables.",
+        },
+        { property: "og:title", content: "IA al Día — Noticias y Datos Fascinantes" },
+        {
+          property: "og:description",
+          content:
+            "Noticias reales y curiosidades de IA actualizadas cada pocas horas con enlaces a la fuente original.",
+        },
+        { property: "og:type", content: "website" },
+        { property: "og:url", content: "https://rutadeia.com/news" },
+      ],
+      links: [{ rel: "canonical", href: "https://rutadeia.com/news" }],
+      scripts,
+    };
+  },
   loader: ({ context }) => context.queryClient.ensureQueryData(newsQueryOptions),
   component: NewsPage,
   errorComponent: ({ error }) => (
