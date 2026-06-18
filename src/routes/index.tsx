@@ -9,6 +9,7 @@ import { ToolsDirectory } from "@/components/landing/ToolsDirectory";
 import { Testimonials } from "@/components/landing/Testimonials";
 import { FAQ } from "@/components/landing/FAQ";
 import { Footer } from "@/components/landing/Footer";
+import { LeadMagnet } from "@/components/landing/LeadMagnet";
 
 
 const FAQ_ENTRIES = [
@@ -111,6 +112,7 @@ function Index() {
           <PrimeYoungAd />
         </div>
         <ToolsDirectory />
+        <LeadMagnet />
         <Testimonials />
         <FAQ />
       </main>
