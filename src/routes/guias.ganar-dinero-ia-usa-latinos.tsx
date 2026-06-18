@@ -3,6 +3,13 @@ import { ArrowRight, CheckCircle2, Sparkles, TrendingUp, Wallet } from "lucide-r
 import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import { FAQSection, faqJsonLd, type FAQItem } from "@/components/landing/FAQSection";
+import { Breadcrumbs, breadcrumbJsonLd, type Crumb } from "@/components/seo/Breadcrumbs";
+
+const CRUMBS: Crumb[] = [
+  { name: "Inicio", url: "https://rutadeia.com/" },
+  { name: "Guías", url: "https://rutadeia.com/" },
+  { name: "Ganar Dinero con IA · Latinos en USA", url: "https://rutadeia.com/guias/ganar-dinero-ia-usa-latinos" },
+];
 
 const FAQS: FAQItem[] = [
   {
