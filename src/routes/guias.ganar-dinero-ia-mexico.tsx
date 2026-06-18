@@ -3,6 +3,13 @@ import { ArrowRight, CheckCircle2, Sparkles, TrendingUp, Wallet } from "lucide-r
 import { Navbar } from "@/components/landing/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import { FAQSection, faqJsonLd, type FAQItem } from "@/components/landing/FAQSection";
+import { Breadcrumbs, breadcrumbJsonLd, type Crumb } from "@/components/seo/Breadcrumbs";
+
+const CRUMBS: Crumb[] = [
+  { name: "Inicio", url: "https://rutadeia.com/" },
+  { name: "Guías", url: "https://rutadeia.com/" },
+  { name: "Ganar Dinero con IA en México", url: "https://rutadeia.com/guias/ganar-dinero-ia-mexico" },
+];
 
 const FAQS: FAQItem[] = [
   {
@@ -67,6 +74,10 @@ export const Route = createFileRoute("/guias/ganar-dinero-ia-mexico")({
       {
         type: "application/ld+json",
         children: JSON.stringify(faqJsonLd(FAQS)),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(breadcrumbJsonLd(CRUMBS)),
       },
     ],
   }),
