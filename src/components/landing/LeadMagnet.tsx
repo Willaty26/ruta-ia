@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Download, Gift, Mail, CheckCircle2 } from "lucide-react";
+import { useServerFn } from "@tanstack/react-start";
 import { z } from "zod";
+import { submitLead } from "@/lib/leads.functions";
 
 const emailSchema = z
   .string()
@@ -10,14 +12,14 @@ const emailSchema = z
   .max(254, { message: "Correo demasiado largo." })
   .email({ message: "Ingresa un correo válido." });
 
-const STORAGE_KEY = "ruta_ia_leads_v1";
-
 export function LeadMagnet() {
   const [email, setEmail] = useState("");
   const [done, setDone] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const submit = useServerFn(submitLead);
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
     const parsed = emailSchema.safeParse(email);
@@ -25,20 +27,25 @@ export function LeadMagnet() {
       setError(parsed.error.issues[0]?.message ?? "Correo inválido.");
       return;
     }
-    const value = parsed.data;
+    setLoading(true);
     try {
-      const raw = localStorage.getItem(STORAGE_KEY) ?? "[]";
-      const prev = z.array(z.string().email()).catch([]).parse(JSON.parse(raw));
-      if (prev.length >= 500) {
-        setError("Demasiados envíos desde este dispositivo.");
+      const res = await submit({ data: { email: parsed.data } });
+      if (!res.ok) {
+        setError(
+          res.error === "rate_limited"
+            ? "Demasiados intentos. Vuelve en una hora."
+            : "No pudimos registrar tu correo. Intenta de nuevo.",
+        );
+        setLoading(false);
         return;
       }
-      if (!prev.includes(value)) prev.push(value);
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(prev));
-    } catch {
-      // ignore storage errors
+      setDone(true);
+    } catch (err) {
+      console.error(err);
+      setError("Error de conexión. Intenta de nuevo.");
+    } finally {
+      setLoading(false);
     }
-    setDone(true);
   };
 
   return (
@@ -101,10 +108,11 @@ export function LeadMagnet() {
                 </div>
                 <button
                   type="submit"
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-5 py-3 text-sm font-bold text-accent-foreground shadow-[var(--shadow-glow-accent)] transition-all hover:scale-[1.02] hover:brightness-110"
+                  disabled={loading}
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-5 py-3 text-sm font-bold text-accent-foreground shadow-[var(--shadow-glow-accent)] transition-all hover:scale-[1.02] hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:scale-100"
                 >
                   <Download className="h-4 w-4" />
-                  Quiero el PDF
+                  {loading ? "Enviando…" : "Quiero el PDF"}
                 </button>
               </form>
             )}
