@@ -137,6 +137,7 @@ function GuideUsaLatinos() {
       <Navbar />
       <main className="px-4 py-16 sm:px-6 sm:py-24">
         <article className="mx-auto max-w-3xl">
+          <Breadcrumbs items={CRUMBS} />
           <header className="mb-12 text-center">
             <span className="text-xs font-bold uppercase tracking-widest text-accent">
               Guía Regional · Latinos en USA 🇺🇸
