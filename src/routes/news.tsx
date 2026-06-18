@@ -72,23 +72,23 @@ function ArticleCard({ article }: { article: NewsArticle }) {
     <Card className="group flex h-full flex-col border-border/60 bg-card/60 transition-all hover:border-primary/60 hover:shadow-[var(--shadow-glow)]">
       <CardHeader className="space-y-3">
         <div className="flex items-center justify-between gap-2">
-          <Badge variant="outline" className="border-primary/40 bg-primary/10 text-primary">
+          <Badge variant="outline" className="border-primary/40 bg-primary/10 text-primary text-sm">
             {article.category}
           </Badge>
-          <span className="truncate text-xs text-muted-foreground">{article.source}</span>
+          <span className="truncate text-sm text-muted-foreground">{article.source}</span>
         </div>
-        <CardTitle className="text-lg leading-snug">{article.title}</CardTitle>
+        <CardTitle className="text-xl leading-snug sm:text-2xl">{article.title}</CardTitle>
       </CardHeader>
       <CardContent className="flex flex-1 flex-col justify-between gap-4">
-        <p className="text-sm leading-relaxed text-muted-foreground">{article.description}</p>
+        <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">{article.description}</p>
         <div className="flex flex-wrap items-center gap-2">
           <a
             href={article.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-md bg-primary/10 px-3 py-1.5 text-xs font-bold text-primary transition-colors hover:bg-primary/20"
+            className="inline-flex items-center gap-1.5 rounded-md bg-primary/10 px-3 py-2 text-sm font-bold text-primary transition-colors hover:bg-primary/20"
           >
-            <ExternalLink className="h-3.5 w-3.5" />
+            <ExternalLink className="h-4 w-4" />
             Leer fuente
           </a>
           <Button
@@ -96,7 +96,7 @@ function ArticleCard({ article }: { article: NewsArticle }) {
             size="sm"
             onClick={() => shareArticle(article)}
             aria-label={`Compartir artículo: ${article.title}`}
-            className="text-muted-foreground hover:text-primary"
+            className="text-sm text-muted-foreground hover:text-primary"
           >
             <Share2 className="mr-1.5 h-4 w-4" />
             Compartir
