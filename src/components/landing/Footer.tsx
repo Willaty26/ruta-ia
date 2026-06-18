@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { ExternalLink } from "lucide-react";
 
 export function Footer() {
   return (
@@ -7,7 +8,7 @@ export function Footer() {
         <p className="text-xs text-muted-foreground">
           © {new Date().getFullYear()} Ruta IA · Aprende y Gana. Todos los derechos reservados.
         </p>
-        <nav className="flex items-center gap-4 text-xs text-muted-foreground">
+        <nav className="flex flex-wrap items-center justify-center gap-4 text-xs text-muted-foreground">
           <Link
             to="/politica-de-privacidad"
             className="transition-colors hover:text-foreground"
@@ -15,7 +16,17 @@ export function Footer() {
             Política de Privacidad
           </Link>
           <span>
-            Hecho con <span className="text-accent">IA</span> para emprendedores curiosos.
+            Creado por{" "}
+            <a
+              href="https://willaty26.github.io/Alexoscp/"
+              target="_blank"
+              rel="author noopener noreferrer"
+              className="inline-flex items-center gap-1 font-semibold text-accent transition-colors hover:text-primary"
+              title="Visita la página de Alexos CP"
+            >
+              Alexos CP
+              <ExternalLink className="h-3 w-3" />
+            </a>
           </span>
         </nav>
       </div>

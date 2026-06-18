@@ -77,17 +77,27 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Aprende y Gana con IA" },
-      { name: "description", content: "AI Earning Path is a modern web app that helps beginners learn AI and find income generation methods." },
-      { name: "author", content: "Lovable" },
+      { title: "Ruta IA: Aprende y Gana Dinero con IA en 2026" },
+      { name: "description", content: "Aprende IA y gana dinero desde casa con prompts, herramientas gratis y guías paso a paso. Para Latinoamérica y latinos en USA." },
+      { name: "author", content: "Alexos CP" },
       { name: "google-site-verification", content: "s4DODBSjpKz_O-xQnZI-3lXsUbIdwm9mcM6RTgW6Org" },
-      { property: "og:title", content: "Aprende y Gana con IA" },
-      { property: "og:description", content: "AI Earning Path is a modern web app that helps beginners learn AI and find income generation methods." },
+      { name: "language", content: "Spanish" },
+      { httpEquiv: "content-language", content: "es" },
+      { name: "geo.region", content: "MX" },
+      { name: "geo.placename", content: "Latinoamérica" },
+      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1" },
+      { property: "og:title", content: "Ruta IA: Aprende y Gana Dinero con IA en 2026" },
+      { property: "og:description", content: "Prompts, herramientas y rutas de monetización con IA para hispanohablantes en LATAM y USA." },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
-      { name: "twitter:title", content: "Aprende y Gana con IA" },
-      { name: "twitter:description", content: "AI Earning Path is a modern web app that helps beginners learn AI and find income generation methods." },
+      { property: "og:locale", content: "es_ES" },
+      { property: "og:locale:alternate", content: "es_MX" },
+      { property: "og:locale:alternate", content: "es_AR" },
+      { property: "og:locale:alternate", content: "es_CO" },
+      { property: "og:locale:alternate", content: "es_US" },
+      { property: "og:site_name", content: "Ruta IA" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Ruta IA: Aprende y Gana Dinero con IA" },
+      { name: "twitter:description", content: "Prompts, herramientas y rutas de monetización con IA para hispanohablantes." },
       { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/c3125471-05f5-4201-b834-c6a599466993/id-preview-c2b75ec6--cbd1f918-d582-40dc-86ab-31a02ad7ff30.lovable.app-1781153790299.png" },
       { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/c3125471-05f5-4201-b834-c6a599466993/id-preview-c2b75ec6--cbd1f918-d582-40dc-86ab-31a02ad7ff30.lovable.app-1781153790299.png" },
     ],
@@ -102,6 +112,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap",
       },
+      { rel: "alternate", hrefLang: "es", href: "https://rutadeia.com/" },
+      { rel: "alternate", hrefLang: "es-MX", href: "https://rutadeia.com/" },
+      { rel: "alternate", hrefLang: "es-US", href: "https://rutadeia.com/" },
+      { rel: "alternate", hrefLang: "es-AR", href: "https://rutadeia.com/" },
+      { rel: "alternate", hrefLang: "es-CO", href: "https://rutadeia.com/" },
+      { rel: "alternate", hrefLang: "es-419", href: "https://rutadeia.com/" },
+      { rel: "alternate", hrefLang: "x-default", href: "https://rutadeia.com/" },
     ],
     scripts: [
       {
@@ -111,6 +128,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         children:
           "window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-PT23TGRYK9');",
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Person",
+          name: "Alexos CP",
+          url: "https://willaty26.github.io/Alexoscp/",
+          jobTitle: "Creador de Ruta IA",
+          worksFor: { "@type": "Organization", name: "Ruta IA", url: "https://rutadeia.com/" },
+        }),
       },
     ],
   }),
@@ -122,7 +150,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className="dark">
+    <html lang="es" className="dark">
       <head>
         <HeadContent />
       </head>
