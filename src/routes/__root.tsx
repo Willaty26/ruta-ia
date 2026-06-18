@@ -112,6 +112,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap",
       },
+      { rel: "alternate", hrefLang: "es", href: "https://rutadeia.com/" },
+      { rel: "alternate", hrefLang: "es-MX", href: "https://rutadeia.com/" },
+      { rel: "alternate", hrefLang: "es-US", href: "https://rutadeia.com/" },
+      { rel: "alternate", hrefLang: "es-AR", href: "https://rutadeia.com/" },
+      { rel: "alternate", hrefLang: "es-CO", href: "https://rutadeia.com/" },
+      { rel: "alternate", hrefLang: "es-419", href: "https://rutadeia.com/" },
+      { rel: "alternate", hrefLang: "x-default", href: "https://rutadeia.com/" },
     ],
     scripts: [
       {
