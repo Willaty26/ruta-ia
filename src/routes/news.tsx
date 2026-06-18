@@ -1,8 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useSuspenseQuery, queryOptions } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
-import { ArrowLeft, ExternalLink, RefreshCw, Share2 } from "lucide-react";
+import { ArrowLeft, ChevronLeft, ChevronRight, ExternalLink, RefreshCw, Share2 } from "lucide-react";
 import { toast } from "sonner";
+import { zodValidator, fallback } from "@tanstack/zod-adapter";
+import { z } from "zod";
 import { Toaster } from "@/components/ui/sonner";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -13,17 +15,50 @@ import { Footer } from "@/components/landing/Footer";
 import { AdSlot } from "@/components/landing/AdSlot";
 import { getAINews, type NewsArticle, type NewsPayload } from "@/lib/news.functions";
 
+const PAGE_SIZE = 6;
+const BASE_URL = "https://rutadeia.com/news";
+
 const newsQueryOptions = queryOptions<NewsPayload>({
   queryKey: ["ai-news"],
   queryFn: () => getAINews(),
   staleTime: 1000 * 60 * 30, // 30 min en cliente
 });
 
+const newsSearchSchema = z.object({
+  page: fallback(z.number().int().min(1), 1).default(1),
+});
+
+function pageUrl(page: number) {
+  return page <= 1 ? BASE_URL : `${BASE_URL}?page=${page}`;
+}
+
+function paginate<T>(items: T[], page: number, size = PAGE_SIZE) {
+  const totalPages = Math.max(1, Math.ceil(items.length / size));
+  const safePage = Math.min(Math.max(1, page), totalPages);
+  const start = (safePage - 1) * size;
+  return {
+    items: items.slice(start, start + size),
+    page: safePage,
+    totalPages,
+    startIndex: start,
+  };
+}
+
 export const Route = createFileRoute("/news")({
-  head: ({ loaderData }) => {
+  validateSearch: zodValidator(newsSearchSchema),
+  loaderDeps: ({ search }) => ({ page: search.page }),
+  head: ({ loaderData, match }) => {
     const payload = loaderData as NewsPayload | undefined;
+    const requestedPage =
+      (match as { search?: { page?: number } } | undefined)?.search?.page ?? 1;
     const allArticles = [...(payload?.news ?? []), ...(payload?.curious ?? [])];
     const datePublished = payload?.fetchedAt ?? new Date().toISOString();
+
+    const { items: pageItems, page, totalPages, startIndex } = paginate(allArticles, requestedPage);
+
+    const canonical = pageUrl(page);
+    const titleBase = "IA al Día: Noticias y Datos Fascinantes — Ruta IA";
+    const title = page > 1 ? `${titleBase} (página ${page} de ${totalPages})` : titleBase;
 
     const scripts: Array<{ type: string; children: string }> = [
       {
@@ -31,8 +66,8 @@ export const Route = createFileRoute("/news")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "CollectionPage",
-          name: "IA al Día: Noticias y Datos Fascinantes",
-          url: "https://rutadeia.com/news",
+          name: title,
+          url: canonical,
           inLanguage: "es",
           description:
             "Últimas noticias y curiosidades reales sobre Inteligencia Artificial, actualizadas automáticamente.",
@@ -41,17 +76,19 @@ export const Route = createFileRoute("/news")({
       },
     ];
 
-    if (allArticles.length > 0) {
+    if (pageItems.length > 0) {
       scripts.push({
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "ItemList",
+          name: `Noticias de IA — página ${page} de ${totalPages}`,
+          url: canonical,
           itemListOrder: "https://schema.org/ItemListOrderDescending",
-          numberOfItems: allArticles.length,
-          itemListElement: allArticles.map((a, i) => ({
+          numberOfItems: pageItems.length,
+          itemListElement: pageItems.map((a, i) => ({
             "@type": "ListItem",
-            position: i + 1,
+            position: startIndex + i + 1,
             url: a.url,
             item: {
               "@type": "NewsArticle",
@@ -72,24 +109,30 @@ export const Route = createFileRoute("/news")({
       });
     }
 
+    const links: Array<{ rel: string; href: string }> = [
+      { rel: "canonical", href: canonical },
+    ];
+    if (page > 1) links.push({ rel: "prev", href: pageUrl(page - 1) });
+    if (page < totalPages) links.push({ rel: "next", href: pageUrl(page + 1) });
+
     return {
       meta: [
-        { title: "IA al Día: Noticias y Datos Fascinantes — Ruta IA" },
+        { title },
         {
           name: "description",
           content:
             "Últimas noticias y curiosidades reales sobre Inteligencia Artificial, actualizadas automáticamente con fuentes verificables.",
         },
-        { property: "og:title", content: "IA al Día — Noticias y Datos Fascinantes" },
+        { property: "og:title", content: title },
         {
           property: "og:description",
           content:
             "Noticias reales y curiosidades de IA actualizadas cada pocas horas con enlaces a la fuente original.",
         },
         { property: "og:type", content: "website" },
-        { property: "og:url", content: "https://rutadeia.com/news" },
+        { property: "og:url", content: canonical },
       ],
-      links: [{ rel: "canonical", href: "https://rutadeia.com/news" }],
+      links,
       scripts,
     };
   },
@@ -172,12 +215,49 @@ function formatFetchedAt(iso: string) {
   }
 }
 
+function Pagination({ page, totalPages }: { page: number; totalPages: number }) {
+  if (totalPages <= 1) return null;
+  return (
+    <nav aria-label="Paginación de noticias" className="flex items-center justify-center gap-3 pt-2">
+      <Button asChild variant="outline" size="sm" disabled={page <= 1} className="gap-1">
+        <Link
+          to="/news"
+          search={{ page: Math.max(1, page - 1) }}
+          aria-disabled={page <= 1}
+          rel="prev"
+        >
+          <ChevronLeft className="h-4 w-4" />
+          Anterior
+        </Link>
+      </Button>
+      <span className="text-sm font-medium text-muted-foreground">
+        Página <strong className="text-foreground">{page}</strong> de {totalPages}
+      </span>
+      <Button asChild variant="outline" size="sm" disabled={page >= totalPages} className="gap-1">
+        <Link
+          to="/news"
+          search={{ page: Math.min(totalPages, page + 1) }}
+          aria-disabled={page >= totalPages}
+          rel="next"
+        >
+          Siguiente
+          <ChevronRight className="h-4 w-4" />
+        </Link>
+      </Button>
+    </nav>
+  );
+}
+
 function NewsPage() {
   const fetchNews = useServerFn(getAINews);
+  const { page } = Route.useSearch();
   const { data, refetch, isFetching } = useSuspenseQuery({
     ...newsQueryOptions,
     queryFn: () => fetchNews(),
   });
+
+  const newsPaged = paginate(data.news, page);
+  const curiousPaged = paginate(data.curious, page);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -223,28 +303,30 @@ function NewsPage() {
           </TabsList>
 
           <TabsContent value="ultima" className="mt-8 space-y-8">
-            {data.news.length === 0 ? (
+            {newsPaged.items.length === 0 ? (
               <p className="text-center text-muted-foreground">Sin noticias por el momento.</p>
             ) : (
               <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {data.news.map((a) => (
+                {newsPaged.items.map((a) => (
                   <ArticleCard key={a.url} article={a} />
                 ))}
               </div>
             )}
+            <Pagination page={newsPaged.page} totalPages={newsPaged.totalPages} />
             <AdSlot label="📚 Libro recomendado en Amazon: domina la IA paso a paso" variant={0} />
           </TabsContent>
 
           <TabsContent value="curiosas" className="mt-8 space-y-8">
-            {data.curious.length === 0 ? (
+            {curiousPaged.items.length === 0 ? (
               <p className="text-center text-muted-foreground">Sin curiosidades por el momento.</p>
             ) : (
               <div className="grid gap-6 sm:grid-cols-2">
-                {data.curious.map((a) => (
+                {curiousPaged.items.map((a) => (
                   <ArticleCard key={a.url} article={a} />
                 ))}
               </div>
             )}
+            <Pagination page={curiousPaged.page} totalPages={curiousPaged.totalPages} />
             <AdSlot label="📘 Sigue aprendiendo: libro de IA destacado en Amazon" variant={1} />
           </TabsContent>
         </Tabs>
