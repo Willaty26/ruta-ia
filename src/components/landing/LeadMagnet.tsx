@@ -40,14 +40,6 @@ export function LeadMagnet() {
     }
     setDone(true);
   };
-      const prev: string[] = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? "[]");
-      if (!prev.includes(value)) prev.push(value);
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(prev));
-    } catch {
-      // ignore storage errors
-    }
-    setDone(true);
-  };
 
   return (
     <section
