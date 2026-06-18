@@ -46,9 +46,11 @@ function paginate<T>(items: T[], page: number, size = PAGE_SIZE) {
 
 export const Route = createFileRoute("/news")({
   validateSearch: zodValidator(newsSearchSchema),
-  head: ({ loaderData, search }) => {
+  loaderDeps: ({ search }) => ({ page: search.page }),
+  head: ({ loaderData, match }) => {
     const payload = loaderData as NewsPayload | undefined;
-    const requestedPage = (search as { page?: number } | undefined)?.page ?? 1;
+    const requestedPage =
+      (match as { search?: { page?: number } } | undefined)?.search?.page ?? 1;
     const allArticles = [...(payload?.news ?? []), ...(payload?.curious ?? [])];
     const datePublished = payload?.fetchedAt ?? new Date().toISOString();
 
