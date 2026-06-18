@@ -1,5 +1,14 @@
 import { useState } from "react";
 import { Download, Gift, Mail, CheckCircle2 } from "lucide-react";
+import { z } from "zod";
+
+const emailSchema = z
+  .string()
+  .trim()
+  .toLowerCase()
+  .min(5, { message: "Ingresa un correo válido." })
+  .max(254, { message: "Correo demasiado largo." })
+  .email({ message: "Ingresa un correo válido." });
 
 const STORAGE_KEY = "ruta_ia_leads_v1";
 
