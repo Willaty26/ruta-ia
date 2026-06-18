@@ -75,6 +75,10 @@ export const Route = createFileRoute("/guias/ganar-dinero-ia-usa-latinos")({
         type: "application/ld+json",
         children: JSON.stringify(faqJsonLd(FAQS)),
       },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(breadcrumbJsonLd(CRUMBS)),
+      },
     ],
   }),
   component: GuideUsaLatinos,
