@@ -129,6 +129,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         children:
           "window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-PT23TGRYK9');",
       },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Person",
+          name: "Alexos CP",
+          url: "https://willaty26.github.io/Alexoscp/",
+          jobTitle: "Creador de Ruta IA",
+          worksFor: { "@type": "Organization", name: "Ruta IA", url: "https://rutadeia.com/" },
+        }),
+      },
     ],
   }),
   shellComponent: RootShell,
