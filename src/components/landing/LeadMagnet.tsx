@@ -108,10 +108,11 @@ export function LeadMagnet() {
                 </div>
                 <button
                   type="submit"
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-5 py-3 text-sm font-bold text-accent-foreground shadow-[var(--shadow-glow-accent)] transition-all hover:scale-[1.02] hover:brightness-110"
+                  disabled={loading}
+                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-5 py-3 text-sm font-bold text-accent-foreground shadow-[var(--shadow-glow-accent)] transition-all hover:scale-[1.02] hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:scale-100"
                 >
                   <Download className="h-4 w-4" />
-                  Quiero el PDF
+                  {loading ? "Enviando…" : "Quiero el PDF"}
                 </button>
               </form>
             )}
