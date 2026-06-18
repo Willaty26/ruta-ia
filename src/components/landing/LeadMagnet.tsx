@@ -1,5 +1,14 @@
 import { useState } from "react";
 import { Download, Gift, Mail, CheckCircle2 } from "lucide-react";
+import { z } from "zod";
+
+const emailSchema = z
+  .string()
+  .trim()
+  .toLowerCase()
+  .min(5, { message: "Ingresa un correo válido." })
+  .max(254, { message: "Correo demasiado largo." })
+  .email({ message: "Ingresa un correo válido." });
 
 const STORAGE_KEY = "ruta_ia_leads_v1";
 
@@ -11,13 +20,19 @@ export function LeadMagnet() {
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setError(null);
-    const value = email.trim().toLowerCase();
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-      setError("Ingresa un correo válido.");
+    const parsed = emailSchema.safeParse(email);
+    if (!parsed.success) {
+      setError(parsed.error.issues[0]?.message ?? "Correo inválido.");
       return;
     }
+    const value = parsed.data;
     try {
-      const prev: string[] = JSON.parse(localStorage.getItem(STORAGE_KEY) ?? "[]");
+      const raw = localStorage.getItem(STORAGE_KEY) ?? "[]";
+      const prev = z.array(z.string().email()).catch([]).parse(JSON.parse(raw));
+      if (prev.length >= 500) {
+        setError("Demasiados envíos desde este dispositivo.");
+        return;
+      }
       if (!prev.includes(value)) prev.push(value);
       localStorage.setItem(STORAGE_KEY, JSON.stringify(prev));
     } catch {
