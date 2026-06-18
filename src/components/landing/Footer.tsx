@@ -22,9 +22,9 @@ export function Footer() {
               target="_blank"
               rel="author noopener noreferrer"
               className="inline-flex items-center gap-1 font-semibold text-accent transition-colors hover:text-primary"
-              title="Visita la página de Alexos CP"
+              title="Visita la página del creador"
             >
-              Alexos CP
+              el creador
               <ExternalLink className="h-3 w-3" />
             </a>
           </span>
