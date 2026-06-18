@@ -20,6 +20,8 @@ export const Route = createFileRoute("/sitemap.xml")({
           { path: "/guias/prompts-chatgpt-ganar-dinero-2026", changefreq: "monthly", priority: "0.8" },
           { path: "/guias/herramientas-ia-gratis-principiantes", changefreq: "monthly", priority: "0.8" },
           { path: "/guias/freelance-con-ia-sin-experiencia", changefreq: "monthly", priority: "0.8" },
+          { path: "/guias/ganar-dinero-ia-mexico", changefreq: "monthly", priority: "0.8" },
+          { path: "/guias/ganar-dinero-ia-usa-latinos", changefreq: "monthly", priority: "0.8" },
           { path: "/politica-de-privacidad", changefreq: "yearly", priority: "0.3" },
         ];
 
