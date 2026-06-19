@@ -14,7 +14,7 @@ const emailSchema = z
 
 export function LeadMagnet() {
   const [email, setEmail] = useState("");
-  const [done, setDone] = useState(false);
+  const [done, setDone] = useState<null | { emailed: boolean; downloadUrl: string }>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const submit = useServerFn(submitLead);
