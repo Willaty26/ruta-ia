@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Sparkles } from "lucide-react";
 import logoAsset from "@/assets/ruta-ia-logo.png.asset.json";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 export function Navbar() {
   return (
