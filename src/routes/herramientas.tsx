@@ -37,18 +37,6 @@ function HerramientasPage() {
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
       <main>
-        <div className="mx-auto max-w-4xl px-4 pt-12 text-center sm:px-6">
-          <span className="text-xs font-bold uppercase tracking-widest text-accent">
-            Directorio completo
-          </span>
-          <h1 className="mt-3 text-4xl font-black tracking-tight sm:text-5xl">
-            Herramientas de <span className="text-primary">IA</span> que sí valen la pena
-          </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-base text-muted-foreground">
-            Curadas a mano. Todas tienen plan gratuito o prueba sin tarjeta. Elige
-            las que encajan con tu ruta de monetización.
-          </p>
-        </div>
         <ToolsDirectory />
       </main>
       <Footer />
