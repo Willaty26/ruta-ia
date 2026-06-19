@@ -18,6 +18,7 @@ import { Route as GuiasPromptsChatgptGanarDinero2026RouteImport } from './routes
 import { Route as GuiasHerramientasIaGratisPrincipiantesRouteImport } from './routes/guias.herramientas-ia-gratis-principiantes'
 import { Route as GuiasGanarDineroIaUsaLatinosRouteImport } from './routes/guias.ganar-dinero-ia-usa-latinos'
 import { Route as GuiasGanarDineroIaMexicoRouteImport } from './routes/guias.ganar-dinero-ia-mexico'
+import { Route as GuiasGanarDineroIaEspanaRouteImport } from './routes/guias.ganar-dinero-ia-espana'
 import { Route as GuiasGanarDineroDesdeCasaIaRouteImport } from './routes/guias.ganar-dinero-desde-casa-ia'
 import { Route as GuiasFreelanceConIaSinExperienciaRouteImport } from './routes/guias.freelance-con-ia-sin-experiencia'
 
@@ -70,6 +71,12 @@ const GuiasGanarDineroIaMexicoRoute =
     path: '/guias/ganar-dinero-ia-mexico',
     getParentRoute: () => rootRouteImport,
   } as any)
+const GuiasGanarDineroIaEspanaRoute =
+  GuiasGanarDineroIaEspanaRouteImport.update({
+    id: '/guias/ganar-dinero-ia-espana',
+    path: '/guias/ganar-dinero-ia-espana',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const GuiasGanarDineroDesdeCasaIaRoute =
   GuiasGanarDineroDesdeCasaIaRouteImport.update({
     id: '/guias/ganar-dinero-desde-casa-ia',
@@ -91,6 +98,7 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/guias/freelance-con-ia-sin-experiencia': typeof GuiasFreelanceConIaSinExperienciaRoute
   '/guias/ganar-dinero-desde-casa-ia': typeof GuiasGanarDineroDesdeCasaIaRoute
+  '/guias/ganar-dinero-ia-espana': typeof GuiasGanarDineroIaEspanaRoute
   '/guias/ganar-dinero-ia-mexico': typeof GuiasGanarDineroIaMexicoRoute
   '/guias/ganar-dinero-ia-usa-latinos': typeof GuiasGanarDineroIaUsaLatinosRoute
   '/guias/herramientas-ia-gratis-principiantes': typeof GuiasHerramientasIaGratisPrincipiantesRoute
@@ -104,6 +112,7 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/guias/freelance-con-ia-sin-experiencia': typeof GuiasFreelanceConIaSinExperienciaRoute
   '/guias/ganar-dinero-desde-casa-ia': typeof GuiasGanarDineroDesdeCasaIaRoute
+  '/guias/ganar-dinero-ia-espana': typeof GuiasGanarDineroIaEspanaRoute
   '/guias/ganar-dinero-ia-mexico': typeof GuiasGanarDineroIaMexicoRoute
   '/guias/ganar-dinero-ia-usa-latinos': typeof GuiasGanarDineroIaUsaLatinosRoute
   '/guias/herramientas-ia-gratis-principiantes': typeof GuiasHerramientasIaGratisPrincipiantesRoute
@@ -118,6 +127,7 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/guias/freelance-con-ia-sin-experiencia': typeof GuiasFreelanceConIaSinExperienciaRoute
   '/guias/ganar-dinero-desde-casa-ia': typeof GuiasGanarDineroDesdeCasaIaRoute
+  '/guias/ganar-dinero-ia-espana': typeof GuiasGanarDineroIaEspanaRoute
   '/guias/ganar-dinero-ia-mexico': typeof GuiasGanarDineroIaMexicoRoute
   '/guias/ganar-dinero-ia-usa-latinos': typeof GuiasGanarDineroIaUsaLatinosRoute
   '/guias/herramientas-ia-gratis-principiantes': typeof GuiasHerramientasIaGratisPrincipiantesRoute
@@ -133,6 +143,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/guias/freelance-con-ia-sin-experiencia'
     | '/guias/ganar-dinero-desde-casa-ia'
+    | '/guias/ganar-dinero-ia-espana'
     | '/guias/ganar-dinero-ia-mexico'
     | '/guias/ganar-dinero-ia-usa-latinos'
     | '/guias/herramientas-ia-gratis-principiantes'
@@ -146,6 +157,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/guias/freelance-con-ia-sin-experiencia'
     | '/guias/ganar-dinero-desde-casa-ia'
+    | '/guias/ganar-dinero-ia-espana'
     | '/guias/ganar-dinero-ia-mexico'
     | '/guias/ganar-dinero-ia-usa-latinos'
     | '/guias/herramientas-ia-gratis-principiantes'
@@ -159,6 +171,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/guias/freelance-con-ia-sin-experiencia'
     | '/guias/ganar-dinero-desde-casa-ia'
+    | '/guias/ganar-dinero-ia-espana'
     | '/guias/ganar-dinero-ia-mexico'
     | '/guias/ganar-dinero-ia-usa-latinos'
     | '/guias/herramientas-ia-gratis-principiantes'
@@ -173,6 +186,7 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   GuiasFreelanceConIaSinExperienciaRoute: typeof GuiasFreelanceConIaSinExperienciaRoute
   GuiasGanarDineroDesdeCasaIaRoute: typeof GuiasGanarDineroDesdeCasaIaRoute
+  GuiasGanarDineroIaEspanaRoute: typeof GuiasGanarDineroIaEspanaRoute
   GuiasGanarDineroIaMexicoRoute: typeof GuiasGanarDineroIaMexicoRoute
   GuiasGanarDineroIaUsaLatinosRoute: typeof GuiasGanarDineroIaUsaLatinosRoute
   GuiasHerramientasIaGratisPrincipiantesRoute: typeof GuiasHerramientasIaGratisPrincipiantesRoute
@@ -244,6 +258,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GuiasGanarDineroIaMexicoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/guias/ganar-dinero-ia-espana': {
+      id: '/guias/ganar-dinero-ia-espana'
+      path: '/guias/ganar-dinero-ia-espana'
+      fullPath: '/guias/ganar-dinero-ia-espana'
+      preLoaderRoute: typeof GuiasGanarDineroIaEspanaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/guias/ganar-dinero-desde-casa-ia': {
       id: '/guias/ganar-dinero-desde-casa-ia'
       path: '/guias/ganar-dinero-desde-casa-ia'
@@ -270,6 +291,7 @@ const rootRouteChildren: RootRouteChildren = {
   GuiasFreelanceConIaSinExperienciaRoute:
     GuiasFreelanceConIaSinExperienciaRoute,
   GuiasGanarDineroDesdeCasaIaRoute: GuiasGanarDineroDesdeCasaIaRoute,
+  GuiasGanarDineroIaEspanaRoute: GuiasGanarDineroIaEspanaRoute,
   GuiasGanarDineroIaMexicoRoute: GuiasGanarDineroIaMexicoRoute,
   GuiasGanarDineroIaUsaLatinosRoute: GuiasGanarDineroIaUsaLatinosRoute,
   GuiasHerramientasIaGratisPrincipiantesRoute:
