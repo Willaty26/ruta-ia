@@ -24,7 +24,7 @@ export function Navbar() {
         <nav className="hidden items-center gap-7 text-sm text-muted-foreground md:flex">
           <a href="#probador" className="transition-colors hover:text-foreground">Probador</a>
           <a href="#rutas" className="transition-colors hover:text-foreground">Rutas</a>
-          <a href="#herramientas" className="transition-colors hover:text-foreground">Herramientas</a>
+          <Link to="/herramientas" className="transition-colors hover:text-foreground">Herramientas</Link>
           <Link to="/news" className="transition-colors hover:text-foreground">IA al Día</Link>
         </nav>
         <div className="flex items-center gap-2">

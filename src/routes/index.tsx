@@ -5,7 +5,6 @@ import { Hero } from "@/components/landing/Hero";
 import { PromptTester } from "@/components/landing/PromptTester";
 import { MonetizationRoutes } from "@/components/landing/MonetizationRoutes";
 import { PrimeYoungAd } from "@/components/landing/PrimeYoungAd";
-import { ToolsDirectory } from "@/components/landing/ToolsDirectory";
 import { Testimonials } from "@/components/landing/Testimonials";
 import { FAQ } from "@/components/landing/FAQ";
 import { Footer } from "@/components/landing/Footer";
@@ -100,6 +99,31 @@ export const Route = createFileRoute("/")({
 });
 
 
+function ToolsDirectoryTeaser() {
+  return (
+    <section id="herramientas" className="mx-auto max-w-5xl px-4 py-16 sm:px-6">
+      <div className="rounded-3xl border border-primary/30 bg-gradient-to-br from-primary/10 via-card to-accent/10 p-8 text-center shadow-[var(--shadow-glow)] sm:p-12">
+        <span className="text-xs font-bold uppercase tracking-widest text-accent">
+          Directorio
+        </span>
+        <h2 className="mt-3 text-3xl font-black tracking-tight sm:text-4xl">
+          Las mejores <span className="text-primary">herramientas de IA</span>
+        </h2>
+        <p className="mx-auto mt-3 max-w-xl text-sm text-muted-foreground sm:text-base">
+          13 apps curadas (gratis y premium) para texto, imagen, video y
+          productividad. Cada una con para qué sirve y nota del editor.
+        </p>
+        <a
+          href="/herramientas"
+          className="mt-6 inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-6 py-3 text-sm font-bold text-accent-foreground shadow-[var(--shadow-glow-accent)] transition-transform hover:scale-[1.03]"
+        >
+          Ver directorio completo →
+        </a>
+      </div>
+    </section>
+  );
+}
+
 function Index() {
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -108,12 +132,12 @@ function Index() {
         <Hero />
         <PromptTester />
         <MonetizationRoutes />
+        <ToolsDirectoryTeaser />
+        <LeadMagnet />
+        <Testimonials />
         <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6">
           <PrimeYoungAd />
         </div>
-        <ToolsDirectory />
-        <LeadMagnet />
-        <Testimonials />
         <FAQ />
       </main>
 
@@ -122,3 +146,4 @@ function Index() {
     </div>
   );
 }
+
