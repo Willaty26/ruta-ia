@@ -75,12 +75,22 @@ export function LeadMagnet() {
             {done ? (
               <div className="mt-5 flex items-start gap-3 rounded-xl border border-accent/40 bg-accent/10 p-4 text-sm">
                 <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
-                <div>
+                <div className="flex-1">
                   <p className="font-semibold text-foreground">¡Listo!</p>
                   <p className="text-muted-foreground">
-                    Te enviaremos el pack en breve. Mientras tanto, explora las
-                    rutas de monetización abajo.
+                    {done.emailed
+                      ? "Te enviamos el PDF a tu correo. Mientras llega, descárgalo aquí:"
+                      : "Descarga tu PDF aquí abajo. (Guárdalo, te servirá toda la semana.)"}
                   </p>
+                  <a
+                    href={done.downloadUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-3 inline-flex items-center gap-2 rounded-lg bg-accent px-4 py-2 text-xs font-bold text-accent-foreground transition-transform hover:scale-[1.03]"
+                  >
+                    <Download className="h-3.5 w-3.5" />
+                    Descargar 50 Prompts PDF
+                  </a>
                 </div>
               </div>
             ) : (
