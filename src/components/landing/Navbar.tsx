@@ -28,6 +28,7 @@ export function Navbar() {
           <Link to="/news" className="transition-colors hover:text-foreground">IA al Día</Link>
         </nav>
         <div className="flex items-center gap-2">
+          <ThemeToggle />
           <Link
             to="/news"
             className="inline-flex items-center gap-1.5 rounded-lg border border-primary/40 bg-primary/10 px-3 py-2 text-xs font-bold text-primary transition-colors hover:bg-primary/20 md:hidden"
