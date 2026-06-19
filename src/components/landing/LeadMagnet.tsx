@@ -39,7 +39,7 @@ export function LeadMagnet() {
         setLoading(false);
         return;
       }
-      setDone(true);
+      setDone({ emailed: !!res.emailed, downloadUrl: res.downloadUrl ?? "/50-prompts-ia.pdf" });
     } catch (err) {
       console.error(err);
       setError("Error de conexión. Intenta de nuevo.");
