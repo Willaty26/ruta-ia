@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as PoliticaDePrivacidadRouteImport } from './routes/politica-de-privacidad'
 import { Route as NewsRouteImport } from './routes/news'
+import { Route as HerramientasRouteImport } from './routes/herramientas'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as GuiasPromptsChatgptGanarDinero2026RouteImport } from './routes/guias.prompts-chatgpt-ganar-dinero-2026'
 import { Route as GuiasHerramientasIaGratisPrincipiantesRouteImport } from './routes/guias.herramientas-ia-gratis-principiantes'
@@ -33,6 +34,11 @@ const PoliticaDePrivacidadRoute = PoliticaDePrivacidadRouteImport.update({
 const NewsRoute = NewsRouteImport.update({
   id: '/news',
   path: '/news',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HerramientasRoute = HerramientasRouteImport.update({
+  id: '/herramientas',
+  path: '/herramientas',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -79,6 +85,7 @@ const GuiasFreelanceConIaSinExperienciaRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/herramientas': typeof HerramientasRoute
   '/news': typeof NewsRoute
   '/politica-de-privacidad': typeof PoliticaDePrivacidadRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -91,6 +98,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/herramientas': typeof HerramientasRoute
   '/news': typeof NewsRoute
   '/politica-de-privacidad': typeof PoliticaDePrivacidadRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -104,6 +112,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/herramientas': typeof HerramientasRoute
   '/news': typeof NewsRoute
   '/politica-de-privacidad': typeof PoliticaDePrivacidadRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
@@ -118,6 +127,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/herramientas'
     | '/news'
     | '/politica-de-privacidad'
     | '/sitemap.xml'
@@ -130,6 +140,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/herramientas'
     | '/news'
     | '/politica-de-privacidad'
     | '/sitemap.xml'
@@ -142,6 +153,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/herramientas'
     | '/news'
     | '/politica-de-privacidad'
     | '/sitemap.xml'
@@ -155,6 +167,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  HerramientasRoute: typeof HerramientasRoute
   NewsRoute: typeof NewsRoute
   PoliticaDePrivacidadRoute: typeof PoliticaDePrivacidadRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
@@ -187,6 +200,13 @@ declare module '@tanstack/react-router' {
       path: '/news'
       fullPath: '/news'
       preLoaderRoute: typeof NewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/herramientas': {
+      id: '/herramientas'
+      path: '/herramientas'
+      fullPath: '/herramientas'
+      preLoaderRoute: typeof HerramientasRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -243,6 +263,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  HerramientasRoute: HerramientasRoute,
   NewsRoute: NewsRoute,
   PoliticaDePrivacidadRoute: PoliticaDePrivacidadRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
