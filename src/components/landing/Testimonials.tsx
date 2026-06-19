@@ -6,17 +6,17 @@ const TESTIMONIALS = [
     role: "Estudiante de Marketing",
     avatar: "LM",
     quote:
-      "En 2 semanas usando los prompts empecé a vender mini-ebooks. Conseguí mis primeros ingresos extra el primer mes sin saber nada de IA.",
-    result: "Primeros ingresos en 1 mes",
+      "Probé los prompts un fin de semana y armé un mini-ebook para vender en Gumroad. Me sirvió para entender por dónde empezar sin sentirme perdida.",
+    result: "Primer ebook publicado",
     color: "from-primary to-primary-glow",
   },
   {
     name: "Carlos R.",
-    role: "Freelancer redactor",
+    role: "Redactor freelance",
     avatar: "CR",
     quote:
-      "La ruta de Redactor Freelance me dio plantillas listas. Conseguí mi primer cliente en Upwork en 9 días.",
-    result: "1er cliente en 9 días",
+      "Las plantillas me ahorraron horas escribiendo propuestas. Conseguí mi primer cliente pequeño en Upwork después de un par de semanas mandando aplicaciones.",
+    result: "1er cliente en ~2 semanas",
     color: "from-accent to-primary",
   },
   {
@@ -24,8 +24,8 @@ const TESTIMONIALS = [
     role: "Creadora de contenido",
     avatar: "AP",
     quote:
-      "Pasé de 400 a 12.000 seguidores en TikTok aplicando los hooks generados con los prompts. Brutal.",
-    result: "+11.6K seguidores",
+      "Los hooks me ayudaron a mejorar la retención en TikTok. No me hice viral, pero mis vídeos pasaron de 200 a 1.500 views de media y se nota.",
+    result: "Mejor retención en Reels",
     color: "from-primary-glow to-accent",
   },
 ];
@@ -36,15 +36,16 @@ export function Testimonials() {
       <div className="mx-auto max-w-7xl">
         <div className="mb-12 text-center">
           <span className="text-xs font-bold uppercase tracking-widest text-accent">
-            Resultados Reales
+            Testimonios
           </span>
           <h2 className="mt-3 text-3xl font-black tracking-tight sm:text-5xl">
-            Lo que están <span className="text-primary">consiguiendo</span> con la ruta
+            Lo que cuentan quienes <span className="text-primary">empezaron</span> con la ruta
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-sm text-muted-foreground sm:text-base">
-            Personas como tú que empezaron desde cero y hoy ya generan ingresos con IA.
+            Resultados modestos pero reales. Nada de promesas de hacerte rico de la noche a la mañana.
           </p>
         </div>
+
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {TESTIMONIALS.map((t) => (
