@@ -104,10 +104,10 @@ export function MonetizationRoutes() {
             Paso a paso
           </span>
           <h2 className="mt-3 text-3xl font-black tracking-tight sm:text-5xl">
-            Rutas de <span className="text-accent">Monetización</span>
+            Rutas <span className="text-accent">Prácticas</span> con IA
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-sm text-muted-foreground sm:text-base">
-            Tres modelos reales y probados. Elige uno, sigue los pasos con detalle y empieza esta semana.
+            Tres caminos posibles para aplicar la IA en proyectos reales. No son garantías de ingresos: son ejemplos para aprender haciendo, a tu ritmo.
           </p>
         </div>
 
