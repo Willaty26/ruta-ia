@@ -29,7 +29,7 @@ const ROUTES: Route[] = [
       {
         title: "La Monetización Real — afiliados antes que vistas",
         detail:
-          "No dependas solo de los pagos de TikTok por vistas (son ridículamente bajos al principio). Coloca un enlace de afiliado en tu perfil de un producto físico relacionado con tu contenido — si hablas de salud, un libro de nutrición de Amazon; si hablas de finanzas, una agenda o calculadora financiera. Si mantienes apenas un 1% de tasa de conversión de tus visitas a clics y compras, generarás ingresos estables desde el primer mes.",
+          "No dependas solo de los pagos de TikTok por vistas (suelen ser muy bajos al principio). Coloca un enlace de afiliado en tu perfil de un producto físico relacionado con tu contenido — si hablas de salud, un libro de nutrición de Amazon; si hablas de finanzas, una agenda o calculadora financiera. Los resultados varían mucho según el nicho, la constancia y la audiencia: algunos creadores no ven ingresos en meses y otros sí. Es un camino posible, no un resultado garantizado.",
         tip: "Diversifica con 3 enlaces: Amazon Afiliados, Hotmart (infoproductos en español) y una herramienta SaaS (mayor comisión recurrente).",
         tool: "Amazon Afiliados + Hotmart + Beacons.ai",
       },
@@ -58,7 +58,7 @@ const ROUTES: Route[] = [
       {
         title: "Cierra contratos mensuales, no piezas sueltas",
         detail:
-          "Las piezas sueltas son agotadoras y mal pagadas. Ofrece paquetes mensuales: 4 artículos SEO + 8 newsletters al mes a una tarifa fija que refleje el tiempo y la consistencia que aportas. Prospecta así: identifica 50 empresas en tu nicho con blog desactualizado (último post hace >3 meses), envía email personalizado con auditoría rápida y propuesta concreta de calendario editorial para 3 meses.",
+          "Las piezas sueltas son agotadoras y suelen pagarse mal. Una opción es ofrecer paquetes mensuales: por ejemplo 4 artículos SEO + 8 newsletters al mes a una tarifa fija que refleje el tiempo y la consistencia que aportas. Para prospectar: identifica empresas en tu nicho con blog desactualizado (último post hace >3 meses) y envía un email personalizado con una auditoría rápida y propuesta de calendario editorial. Los resultados dependen mucho de tu nicho, tu portfolio y tu constancia.",
         tip: "Pide siempre un 30–50% de anticipo y firma un acuerdo simple por email. Sin anticipo, sin trabajo.",
         tool: "Upwork + Contra + LinkedIn Sales Navigator (trial)",
       },
@@ -74,21 +74,21 @@ const ROUTES: Route[] = [
         title: "Define un servicio empaquetado, no 'hago páginas web'",
         detail:
           "Vende UN producto claro: 'Landing de captación para [restaurante/abogado/clínica/estudio] entregada en 48h, precio fijo cerrado'. Cuanto más específico, más fácil de vender. Crea una página de aterrizaje propia con 3 ejemplos del antes/después, testimonios (aunque sean de amigos al principio) y un calendario Calendly para reservar llamada.",
-        tip: "Cobrar un precio fijo por landing entregada en 48h es mucho más rentable que cobrar por una web 'completa' que nunca termina.",
+        tip: "Trabajar con precio fijo y plazo cerrado te ayuda a no quedarte atrapado en proyectos infinitos. No garantiza más ingresos: garantiza más claridad.",
         tool: "Lovable + Framer + Calendly",
       },
       {
         title: "Crea 3 plantillas reutilizables y un proceso de entrega",
         detail:
           "Construye una plantilla por vertical (restaurante, profesional de salud, e-commerce básico). Cada plantilla incluye: hero con reserva/CTA, bloque de servicios o menú, testimonios, mapa y contacto, integración con WhatsApp Business y formulario que envía al email del cliente. Documenta tu proceso en un Notion: cuestionario inicial al cliente → diseño en 24h → revisión → publicación. Así puedes entregar en 48h sin morir.",
-        tip: "Cobra una cuota mensual extra por mantenimiento, hosting gestionado y cambios menores — así creas ingresos recurrentes que valen el poco tiempo que les dedicas.",
+        tip: "Una cuota mensual por mantenimiento, hosting y cambios menores puede sumar ingresos recurrentes, pero depende de cuántos clientes mantengas activos.",
         tool: "Lovable + Notion (proceso) + Unsplash + Cloudflare",
       },
       {
         title: "Prospecta a negocios locales sin presencia digital",
         detail:
-          "Abre Google Maps en tu ciudad. Filtra por categorías (peluquerías, dentistas, restaurantes, abogados). Identifica los que tienen ficha pero NO web (o web vieja de 2015). Envía un mensaje por WhatsApp Business o Instagram DM: 'Hola, vi que [Negocio] no tiene web. Hice una demo gratuita para ti, ¿te la enseño en 5 min?'. Lleva la demo pre-construida con su logo y datos. Cierre típico: 1 de cada 10–15 contactos.",
-        tip: "Los negocios locales pagan en efectivo o transferencia inmediata, sin burocracia. Ideal para empezar facturando rápido.",
+          "Abre Google Maps en tu ciudad. Filtra por categorías (peluquerías, dentistas, restaurantes, abogados). Identifica los que tienen ficha pero NO web (o una web muy antigua). Envía un mensaje por WhatsApp Business o Instagram DM: 'Hola, vi que [Negocio] no tiene web. Hice una demo gratuita para ti, ¿te la enseño en 5 min?'. Lleva la demo pre-construida con su logo y datos. La tasa de respuesta y cierre varía mucho según ciudad, sector y cómo escribas el mensaje — no esperes resultados inmediatos.",
+        tip: "Muchos negocios locales pagan en efectivo o transferencia rápida, lo que reduce burocracia. Aun así, conseguir los primeros clientes lleva tiempo.",
         tool: "Google Maps + Instagram DM + WhatsApp Business",
       },
     ],
