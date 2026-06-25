@@ -138,10 +138,12 @@ export const Route = createFileRoute("/news")({
   },
   loader: ({ context }) => context.queryClient.ensureQueryData(newsQueryOptions),
   component: NewsPage,
-  errorComponent: ({ error }) => (
+  errorComponent: () => (
     <div className="mx-auto max-w-2xl px-4 py-20 text-center">
       <h1 className="text-2xl font-bold">No pudimos cargar las noticias</h1>
-      <p className="mt-3 text-muted-foreground">{error.message}</p>
+      <p className="mt-3 text-muted-foreground">
+        Algo salió mal. Inténtalo de nuevo más tarde.
+      </p>
       <Link to="/" className="mt-6 inline-block text-primary underline">
         Volver al inicio
       </Link>
