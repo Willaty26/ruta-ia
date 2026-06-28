@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import type {} from "@tanstack/start-client-core/serverRoute";
+import "@tanstack/start-client-core";
 
 const BASE_URL = "https://rutadeia.com";
 
