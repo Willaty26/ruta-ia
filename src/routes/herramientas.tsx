@@ -37,6 +37,7 @@ function HerramientasPage() {
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
       <main>
+        <h1 className="sr-only">Directorio Completo de Herramientas de IA 2026</h1>
         <ToolsDirectory />
       </main>
       <Footer />
